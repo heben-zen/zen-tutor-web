@@ -1,0 +1,489 @@
+<navigation-bar></navigation-bar>
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="h2">Verified Tutors at $20/hour and tutor keeps it all</h2>
+        <small class="text-muted">We are a platform that connects students with verified tutors in subjects such as Computer Science, Math and Physics (So far).</small>
+        <button class="btn btn-primary">Find a Tutor <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M5 12l14 0" />
+          <path d="M15 16l4 -4" />
+          <path d="M15 8l4 4" />
+        </svg></button>
+      </div>
+      <div class="col-md-6">
+        <img src="../../../assets/student.png" alt="student">
+      </div>
+    </div>
+    <!-- <div class="left">
+      <a class="profile">
+        <div class="profilePicture">
+          <img src="./assets/ZEN.svg" alt="" />
+        </div>
+        <div class="handle">
+          <h4>Zen Profile</h4>
+          <p class="textMuted">@zen</p>
+        </div>
+      </a>
+
+      <div class="sidebar">
+        <a class="menuItem">
+          <span>
+            <i class="bi bi-house-door"></i>
+          </span>
+          <h3>HOME</h3>
+        </a>
+
+        <a  class="menuItem">
+          <span>
+            <i class="bi bi-compass"></i>
+          </span>
+          <h3>EXPLORE</h3>
+        </a>
+        <a class="menuItem" id="notifications">
+          <span>
+            <i class="bi bi-bell"
+              ><small class="notificationCount" id="notificationCount">3+</small></i
+            >
+          </span>
+          <h3>NOTIFICATIONS</h3>
+          <div class="notificationsPopup" >
+            <div>
+              <div class="profilePicture">
+                <img src="./assets/shrek.jpg" alt="" />
+              </div>
+              <div class="notificationBody">
+                <b>Shrek</b> accepted your friend request
+                <small class="textMuted">2 DAYS AGO</small>
+              </div>
+            </div>
+            <div>
+              <div class="profilePicture">
+                <img src="./assets/Yo.jpg" alt="" />
+              </div>
+              <div class="notificationBody">
+                <b>Luis Cedillo</b> liked your post
+                <small class="textMuted">1 HOUR AGO</small>
+              </div>
+            </div>
+            <div>
+              <div class="profilePicture">
+                <img src="./assets/stevejobs.jpg" alt="" />
+              </div>
+              <div class="notificationBody">
+                <b>Steve</b> commented on your post
+                <small class="textMuted">4 DAYS AGO</small>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a class="menuItem" id="message-notifications">
+          <span>
+            <i class="bi bi-envelope"
+              ><small class="notificationCount">6</small></i
+            >
+          </span>
+          <h3>MESSAGES</h3>
+        </a>
+        <a class="menuItem">
+          <span><i class="bi bi-bookmark"></i></span>
+          <h3>BOOKMARKS</h3>
+        </a>
+        <a  class="menuItem">
+          <span><i class="bi bi-pencil"></i></span>
+          <h3>BE PRODUCTIVE</h3>
+        </a>
+        <a class="menuItem" id="theme">
+          <span>
+            <i class="bi bi-palette"></i>
+          </span>
+          <h3>THEME</h3>
+        </a>
+        <a  class="menuItem">
+          <span>
+            <i class="bi bi-gear"></i>
+          </span>
+          <h3>SETTINGS</h3>
+        </a>
+      </div>
+      <label for="Create post" class="btn btnPrimary">Create post</label>
+    </div>
+
+    <div class="middle">
+      <div class="stories">
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/batman.jpg" alt="" />
+          </div>
+          <div>
+            <p class="name">Bruce Wayne</p>
+          </div>
+        </div>
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/eva.jpg" alt="" />
+          </div>
+          <div>
+            <p class="name">Eva</p>
+          </div>
+        </div>
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/Microsoft-Logo.png" alt="" />
+          </div>
+          <div>
+            <p class="name">Bill Gates</p>
+          </div>
+        </div>
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/michi.jpg" alt="" />
+          </div>
+          <div>
+            <p class="name">Sad Michi</p>
+          </div>
+        </div>
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/Amlo.png" alt="" />
+          </div>
+          <div>
+            <p class="name">Un viejito</p>
+          </div>
+        </div>
+
+        <div class="story">
+          <div class="profilePicture">
+            <img src="./assets/perro.jpg" alt="" />
+          </div>
+          <div>
+            <p class="name">Cheems mamado</p>
+          </div>
+        </div>
+      </div>
+      <form action="" class="createPost">
+        <div class="profilePicture">
+          <img src="./assets/ZEN.svg" alt="" />
+        </div>
+        <input
+          type="text"
+          placeholder="What's on your mind, Zen?"
+          id="createPost"
+        />
+        <input type="submit" value="Post" class="btn btnPrimary" />
+      </form>
+      <div class="feeds">
+        <div class="feed">
+          <div class="head">
+            <div class="user">
+              <div class="profilePicture">
+                <img src="./assets/people.jpg" alt="" />
+              </div>
+              <div class="ingo">
+                <h3><b>Juan Pérez</b></h3>
+                <small>México, 15 MINUTES AGO</small>
+              </div>
+            </div>
+            <span class="edit">
+              <i class="bi bi-three-dots"></i>
+            </span>
+          </div>
+
+          <div class="photo">
+            <img src="./assets/centro.jpg" alt="foto" />
+          </div>
+
+          <div class="actionButtons">
+            <div class="interactionButtons">
+              <span>
+                <i class="bi bi-heart"></i>
+              </span>
+              <span>
+                <i class="bi bi-chat-dots"></i>
+              </span>
+              <span>
+                <i class="bi bi-share"></i>
+              </span>
+            </div>
+            <div class="bookmark">
+              <span>
+                <i class="bi bi-bookmark"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="likedBy">
+            <span><img src="./assets/octocat.jpg" alt="" /></span>
+            <span><img src="./assets/Yo.jpg" alt="" /></span>
+            <span><img src="./assets/cheems.jpg" alt="" /></span>
+            <p>Liked by <b>Luis Cedillo</b> and <b>2,323 others</b></p>
+          </div>
+
+          <div class="caption">
+            <p>
+              <b>Jane Doe</b> Lorem ipsum dolor si quisquam euis.
+              <span class="hashTag">#LifeStyle</span>
+            </p>
+          </div>
+          <div class="textMuted">View all 345 comments</div>
+        </div>
+        <div class="feed">
+          <div class="head">
+            <div class="user">
+              <div class="profilePicture">
+                <img src="./assets/people.jpg" alt="" />
+              </div>
+              <div class="ingo">
+                <h3><b>Juan Pérez</b></h3>
+                <small>México, 15 MINUTES AGO</small>
+              </div>
+            </div>
+            <span class="edit">
+              <i class="bi bi-three-dots"></i>
+            </span>
+          </div>
+
+          <div class="photo">
+            <img src="./assets/centro.jpg" alt="foto" />
+          </div>
+
+          <div class="actionButtons">
+            <div class="interactionButtons">
+              <span>
+                <i class="bi bi-heart"></i>
+              </span>
+              <span>
+                <i class="bi bi-chat-dots"></i>
+              </span>
+              <span>
+                <i class="bi bi-share"></i>
+              </span>
+            </div>
+            <div class="bookmark">
+              <span>
+                <i class="bi bi-bookmark"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="likedBy">
+            <span><img src="./assets/octocat.jpg" alt="" /></span>
+            <span><img src="./assets/Yo.jpg" alt="" /></span>
+            <span><img src="./assets/cheems.jpg" alt="" /></span>
+            <p>Liked by <b>Luis Cedillo</b> and <b>2,323 others</b></p>
+          </div>
+
+          <div class="caption">
+            <p>
+              <b>Jane Doe</b> Lorem ipsum dolor si quisquam euis.
+              <span class="hashTag">#LifeStyle</span>
+            </p>
+          </div>
+          <div class="textMuted">View all 345 comments</div>
+        </div>
+        <div class="feed">
+          <div class="head">
+            <div class="user">
+              <div class="profilePicture">
+                <img src="./assets/people.jpg" alt="" />
+              </div>
+              <div class="ingo">
+                <h3><b>Juan Pérez</b></h3>
+                <small>México, 15 MINUTES AGO</small>
+              </div>
+            </div>
+            <span class="edit">
+              <i class="bi bi-three-dots"></i>
+            </span>
+          </div>
+
+          <div class="photo">
+            <img src="./assets/centro.jpg" alt="foto" />
+          </div>
+
+          <div class="actionButtons">
+            <div class="interactionButtons">
+              <span>
+                <i class="bi bi-heart"></i>
+              </span>
+              <span>
+                <i class="bi bi-chat-dots"></i>
+              </span>
+              <span>
+                <i class="bi bi-share"></i>
+              </span>
+            </div>
+            <div class="bookmark">
+              <span>
+                <i class="bi bi-bookmark"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="likedBy">
+            <span><img src="./assets/octocat.jpg" alt="" /></span>
+            <span><img src="./assets/Yo.jpg" alt="" /></span>
+            <span><img src="./assets/cheems.jpg" alt="" /></span>
+            <p>Liked by <b>Luis Cedillo</b> and <b>2,323 others</b></p>
+          </div>
+
+          <div class="caption">
+            <p>
+              <b>Jane Doe</b> Lorem ipsum dolor si quisquam euis.
+              <span class="hashTag">#LifeStyle</span>
+            </p>
+          </div>
+          <div class="textMuted">View all 345 comments</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="messages">
+        <div class="heading">
+          <h4><b>Messages</b></h4>
+          <i class="bi bi-pencil-square"></i>
+        </div>
+        <div class="searchBar">
+          <i class="bi bi-search"></i>
+          <input
+            type="search"
+            placeholder="Search messages"
+            id="message-Search"
+          />
+        </div>
+        <div class="category">
+          <h6 class="active">Primary</h6>
+          <h6>General</h6>
+          <h6 class="messsagesRequest">Requests(7)</h6>
+        </div>
+
+        <div class="message">
+          <div class="profilePicture">
+            <img src="./assets/people.jpg" alt="" />
+            <div class="active"></div>
+          </div>
+          <div class="messageBody">
+            <h5>Frank</h5>
+            <p class="textBold">2 new messages</p>
+          </div>
+        </div>
+        <div class="message">
+          <div class="profilePicture">
+            <img src="./assets/batman.jpg" alt="" />
+            <div class="active"></div>
+          </div>
+          <div class="messageBody">
+            <h5>Batman</h5>
+            <p class="textMuted">Lets go to the batcave</p>
+          </div>
+        </div>
+        <div class="message">
+          <div class="profilePicture">
+            <img src="./assets/michi.jpg" alt="" />
+          </div>
+          <div class="messageBody">
+            <h5>Sad Michi</h5>
+            <p class="textMuted">Can u hug me?</p>
+          </div>
+        </div>
+      </div>
+      <div class="friendRequests">
+        <h4>Requests</h4>
+        <div class="request">
+          <div class="info">
+            <div class="profilePicture">
+              <img src="./assets/Amlo.png" alt="" />
+            </div>
+            <div>
+              <h5>López Obrador</h5>
+              <p class="textMuted">3 mutual friends</p>
+            </div>
+          </div>
+          <div class="action">
+            <button class="btn btnPrimary">Accept</button>
+            <button class="btn">Decline</button>
+          </div>
+        </div>
+        <div class="request">
+          <div class="info">
+            <div class="profilePicture">
+              <img src="./assets/stevejobs.jpg" alt="" />
+            </div>
+            <div>
+              <h5>Steve Jobs</h5>
+              <p class="textMuted">134 mutual friends</p>
+            </div>
+          </div>
+          <div class="action">
+            <button class="btn btnPrimary">Accept</button>
+            <button class="btn">Decline</button>
+          </div>
+        </div>
+        <div class="request">
+          <div class="info">
+            <div class="profilePicture">
+              <img src="./assets/octocat.jpg" alt="" />
+            </div>
+            <div>
+              <h5>Octo Cat</h5>
+              <p class="textMuted">25 mutual friends</p>
+            </div>
+          </div>
+          <div class="action">
+            <button class="btn btnPrimary">Accept</button>
+            <button class="btn">Decline</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="customizeTheme">
+      <div class="card">
+        <h2>Customize your view</h2>
+        <p class="textMuted">Manage your font size, color or background.</p>
+        <div class="fontSize">
+          <h4>Font Size</h4>
+          <div>
+            <h6>Aa</h6>
+            <div class="chooseSize">
+              <span class="fontSize1"></span>
+              <span class="fontSize2"></span>
+              <span class="fontSize3"></span>
+              <span class="fontSize4 active"></span>
+              <span class="fontSize5"></span>
+            </div>
+            <h3>Aa</h3>
+          </div>
+        </div>
+        <div class="color">
+          <h4>Color</h4>
+          <div class="chooseColor" id="choose-color">
+            <span class="color1 active"></span>
+            <span class="color2"></span>
+            <span class="color3"></span>
+            <span class="color4"></span>
+            <span class="color5"></span>
+          </div>
+        </div>
+        <div class="background">
+          <h4>Background</h4>
+          <div class="chooseBg">
+            <div class="bg1">
+              <span></span>
+              <h5 for="bg1">Light</h5>
+            </div>
+            <div class="bg2 active">
+              <span></span>
+              <h5 for="bg2">Drakula</h5>
+            </div>
+            <div class="bg3">
+              <span></span>
+              <h5 for="bg3">Dark</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</main>

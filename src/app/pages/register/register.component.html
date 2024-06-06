@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+  </head>
+  <base href="/register" />
+  <body>
+    <div class="loginContainer">
+      <div class="loginInfoContainer">
+        <!-- Registrarion form -->
+
+        <h1 class="title">Register</h1>
+        <div class="socialLogin">
+          <!-- Auth -->
+          <div class="socialLoginElement">
+            <img src="./assets/google.svg" alt="Google icon" />
+            <span>Google</span>
+          </div>
+          <div class="socialLoginElement">
+            <img src="./assets/facebook.svg" alt="Google icon" />
+            <span>Facebook</span>
+          </div>
+        </div>
+        <!-- User Form -->
+        <form class="inputContainer" [formGroup]="registrationForm" action="">
+          <div class="inputField">
+            <input
+              class="inputs"
+              type="text"
+              placeholder="Username"
+              id="username"
+              formControlName="username"
+              ngModel
+            />
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs"
+              type="text"
+              placeholder="Email"
+              id="email"
+              formControlName="email"
+              ngModel
+            />
+            <i class="bi bi-envelope"></i>
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs"
+              type="text"
+              placeholder="Name"
+              id="name"
+              formControlName="name"
+              ngModel
+            />
+            <i class="bi bi-person-lines-fill"></i>
+          </div>
+          <div class="inputField">
+            <input class="inputs" type="text" placeholder="Country" ngModel />
+            <i class="bi bi-flag"></i>
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs"
+              type="text"
+              placeholder="Phone:(+52)"
+              formControlName="phone"
+            />
+            <i class="bi bi-telephone"></i>
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs"
+              type="date"
+              name="birthday"
+              id="birthday"
+              formControlName="birthday"
+            />
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs password"
+              type="text"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <i class="bi bi-lock-fill"></i>
+          </div>
+          <div class="inputField">
+            <input
+              class="inputs password"
+              type="password"
+              id="password"
+              placeholder="Confirm Password"
+              formControlName="password2"
+            />
+            <span class="lock"><i class="bi bi-lock-fill"></i></span>
+            <span class="show-btn password">
+              <i class="eye bi bi-eye-fill" id="eye"></i>
+            </span>
+          </div>
+          <!-- Submit form -->
+          <button class="btn" type="submit" id="register">Register</button>
+          <p>
+            Do you have an account?
+            <span class="Span">
+              <a href="/login">Login</a>
+            </span>
+          </p>
+        </form>
+      </div>
+      <img src="./assets/login.svg" alt="Login" class="imageContainer" />
+    </div>
+  </body>
+</html>
