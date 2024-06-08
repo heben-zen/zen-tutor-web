@@ -12,13 +12,13 @@
       </div>
     </div>
     <p>or</p> -->
-    <form action="" class="inputContainer">
+    <form (submit)="onLogin()" class="inputContainer">
       <div class="inputField">
-        <input class="inputs" type="text" placeholder="Username" >
+        <input name="email" class="inputs" type="text" placeholder="Email" >
         <i class="bi bi-person-circle"></i>
       </div>
       <div class="inputField">
-        <input class="inputs password" type="password" id="password" placeholder="Password" >
+        <input name="password" class="inputs password" type="password" id="password" placeholder="Password" >
         <i class="bi bi-lock-fill"></i>
         <i class="bi bi-eye-slash show"></i>
       </div>
@@ -27,8 +27,8 @@
           Click here
         </span>
       </p> -->
-      <button class="btn btn-primary">Login</button>
-      <p>Don't have an account? <span class="Span"><a href="/register">Sign Up</a></span></p>
+      <button type="submit" class="btn btn-primary">Login</button>
+      <p>Don't have an account? <span class="Span"><a routerLink="/register">Register</a></span></p>
     </form>
 
     

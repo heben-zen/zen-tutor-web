@@ -1,0 +1,85 @@
+<div class="registerContainer">
+  <div class="registerInfoContainer">
+    <!-- Registrarion form -->
+
+    <h1 class="title">Apply to become a tutor!</h1>
+    <!-- User Form -->
+    <form class="inputContainer" [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+      <div class="inputField">
+        <input
+          class="inputs"
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <i class="bi bi-envelope"></i>
+      </div>
+      <div class="inputField">
+        <input
+          class="inputs"
+          type="text"
+          placeholder="Name"
+          formControlName="name"
+        />
+        <i class="bi bi-person-lines-fill"></i>
+      </div>
+      <div class="inputField">
+        <select class="inputs" formControlName="country" (change)="test()">
+          <option value="" disabled>Select your Country</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="Mexico">Mexico</option>
+          <!-- Add more countries as needed -->
+        </select>
+        <i class="bi bi-flag"></i>
+      </div>
+      <div class="inputField">
+        <input
+          class="inputs"
+          type="text"
+          placeholder="Phone: (+1)"
+          formControlName="phone_number"
+        />
+        <i class="bi bi-telephone"></i>
+      </div>
+      <div class="inputField">
+        <input
+          class="inputs"
+          type="date"
+          formControlName="birth_date"
+        />
+      </div>
+      <div class="inputField">
+        <mark class="form-text mb-2" for="password">* Password should have at least one digit, one lowercase letter, one uppercase letter, one special character, and a length of 8 to 32 characters.</mark>
+        <input
+        class="inputs password mt-2"
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        />
+        <i class="bi bi-lock-fill"></i>
+      </div>
+      <div class="inputField">
+        <input
+          class="inputs password"
+          type="password"
+          placeholder="Confirm Password"
+          formControlName="confirm_password"
+        />
+        <span class="lock"><i class="bi bi-lock-fill"></i></span>
+        <span class="show-btn password">
+          <i class="eye bi bi-eye-fill" id="eye"></i>
+        </span>
+      </div>
+      <!-- Submit form -->
+      <button class="btn btn-primary" type="submit" id="register" [disabled]="!registrationForm.valid">Register</button>
+      <p>
+        Do you have an account?
+        <span class="Span">
+          <a href="/login">Login</a>
+        </span>
+      </p>
+    </form>
+  </div>
+  <img src="./assets/login.svg" alt="Login" class="imageContainer" />
+</div>
