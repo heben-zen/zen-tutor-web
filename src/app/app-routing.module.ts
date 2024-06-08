@@ -7,27 +7,21 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { EditProfile } from './pages/editprofile/editprofile.component';
 import { RegisterComponent } from './pages/tutor/register/register.component';
 import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'tutor/login', component: LoginComponent },
+  { path: 'tutor/register', component: RegisterComponent},
   { path: 'editprofile', component: EditProfile },
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: TutorDashboardComponent },
+  { path: 'tutor/dashboard', component: TutorDashboardComponent },
   { path: '**', component: NotfoundComponent },
   // { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
 @NgModule({
   imports: [
-    // BrowserModule,
     RouterModule.forRoot(appRoutes),
-    // HttpClientModule,
-    // FormsModule,
-    // ReactiveFormsModule,
   ],
   exports: [RouterModule],
 })

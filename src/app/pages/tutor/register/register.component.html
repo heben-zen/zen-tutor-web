@@ -1,10 +1,13 @@
 <div class="registerContainer">
-  <div class="registerInfoContainer">
+  <p *ngIf="form_submitted">
+    Confirm email {{ registrationForm.value.email }} to complete registration.
+  </p>
+  <div class="registerInfoContainer" *ngIf="!form_submitted">
     <!-- Registrarion form -->
 
     <h1 class="title">Apply to become a tutor!</h1>
     <!-- User Form -->
-    <form class="inputContainer" [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+    <form class="inputContainer" [formGroup]="registrationForm" (ngSubmit)="submitForm()" >
       <div class="inputField">
         <input
           class="inputs"

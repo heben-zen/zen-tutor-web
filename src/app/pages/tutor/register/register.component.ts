@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup | any;
@@ -53,12 +53,13 @@ export class RegisterComponent implements OnInit {
         },
       })
       const data = await res.json();
-      if (data.status === 'success') {
+      if (data.status === 200) {
         this.form_submitted = true;
         
       } else {
         // Tell user to try again
         alert('An error occured, please try again later.');
+        console.error(data);
       }
 
     }

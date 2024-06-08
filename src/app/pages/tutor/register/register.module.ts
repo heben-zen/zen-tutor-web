@@ -18,7 +18,7 @@ import {
     ReactiveFormsModule,
     FormBuilder,
     FormGroup,
-    Validators,
+    Validators
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

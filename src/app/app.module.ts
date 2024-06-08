@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,14 +13,7 @@ import {
 } from '@angular/forms';
 import { NavigationBarComponent } from './pages/home/navigation-bar/navigation-bar.component';
 import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard.component';
-
-// const appRoutes: Routes = [
-//   { path: 'home', component: HomeComponent },
-//   { path: '', redirectTo: '/home', pathMatch: 'full' },
-//   { path: '**', component: HomeComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'register', component: LoginComponent },
-// ];
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +22,7 @@ import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard
     LoginComponent,
     RegisterComponent,
     NavigationBarComponent,
-    TutorDashboardComponent,
+    TutorDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +32,7 @@ import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

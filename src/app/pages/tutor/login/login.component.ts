@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,25 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  text = 'Login';
-  valid_email = 'a.lucio@zentutor.ca';
-  valid_password = "123"
-
-  constructor() { }
+  loginEndpoint = `${environment.API_URL}/tutors/login`;
+  constructor(private cookieService: CookieService, private router: Router) {
+   }
 
   ngOnInit() {
-    console.log("Login Component initialized");    
+    if (this.cookieService.check('token')) {
+      // Redirect to the dashboard
+      this.router.navigate(['/tutor/dashboard']);
+    }
   }
 
-  onLogin() {
+  async onLogin() {
     // Get the email and password from the form
-    let email = (<HTMLInputElement>document.getElementsByName("email")[0]).value;
+    let username = (<HTMLInputElement>document.getElementsByName("email")[0]).value;
     let password = (<HTMLInputElement>document.getElementsByName("password")[0]).value;
-    if (email === this.valid_email && password === this.valid_password) {
+    // Send POST request to the server
+    const res = await fetch(this.loginEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username, password})
+    })    
+    const data = await res.json();
+    // Check if the login was successful
+    if (data.success === true){
+      // Set the token cookie
+      this.cookieService.set('token', data.token, undefined, '/');
       // Redirect to the dashboard
-      window.location.href = "/dashboard";
+      this.router.navigate(['/tutor/dashboard']);
     } else {
-      alert("Login failed");
+      // Display an error message
+      console.warn(data);
+      alert(data.message);
+      // TODO: Display error message in the HTML
     }
   }
 
