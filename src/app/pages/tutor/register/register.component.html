@@ -18,13 +18,22 @@
         <input
           class="inputs"
           type="text"
-          placeholder="Name"
-          formControlName="name"
+          placeholder="First Name"
+          formControlName="first_name"
         />
         <i class="bi bi-person-lines-fill"></i>
       </div>
       <div class="inputField">
-        <select class="inputs" formControlName="country" (change)="test()">
+        <input
+          class="inputs"
+          type="text"
+          placeholder="Last Name"
+          formControlName="last_name"
+        />
+        <i class="bi bi-person-lines-fill"></i>
+      </div>
+      <div class="inputField">
+        <select class="inputs" formControlName="country">
           <option value="" disabled>Select your Country</option>
           <option value="USA">USA</option>
           <option value="Canada">Canada</option>
@@ -70,6 +79,9 @@
         <span class="show-btn password">
           <i class="eye bi bi-eye-fill" id="eye"></i>
         </span>
+        <div *ngIf="registrationForm.errors?.mismatch">
+          Passwords do not match.
+        </div>
       </div>
       <!-- Submit form -->
       <button class="btn btn-primary" type="submit" id="register" [disabled]="!registrationForm.valid">Register</button>
