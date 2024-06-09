@@ -9,5 +9,5 @@ export const environment = {
     appId: "1:743793788639:web:3f2b8420da169f88810b6a",
     measurementId: "G-F6T5BZ42LB"
   },
-  API_URL: 'http://zen-tutor-web.com/api/v1'
+  API_URL: 'http://18.221.239.238/api/v1'
 };
