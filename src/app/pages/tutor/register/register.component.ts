@@ -6,6 +6,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup | any;
-  register_endpoint = 'http://localhost:8080/api/v1/tutors/register';
+  register_endpoint = `${environment.API_URL}/tutors/register`;
   form_submitted = false;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
