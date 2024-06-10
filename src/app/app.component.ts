@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, enableProdMode } from '@angular/core';
+import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-server';
+  constructor() {
+    if (environment.production) {
+      console.log("Production mode on");
+      enableProdMode()
+    }
+  }
 }
