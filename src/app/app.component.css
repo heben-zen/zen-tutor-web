@@ -1,7 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
 app-home {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 

@@ -4,11 +4,11 @@ import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-tutor-login',
+  templateUrl: './tutor-login.component.html',
+  styleUrls: ['./tutor-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class TutorLoginComponent implements OnInit {
   loginEndpoint = `${environment.API_URL}/tutors/login`;
   constructor(private cookieService: CookieService, private router: Router) {
    }

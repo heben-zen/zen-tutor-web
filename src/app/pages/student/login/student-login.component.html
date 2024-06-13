@@ -1,0 +1,15 @@
+<h1 class="">
+    Log In as a Student
+</h1>
+<form class="container-md" [formGroup]="loginForm" (ngSubmit)="logIn()">
+    <div class="mb-4">
+        <label for="email" class="form-label">Email</label>
+        <input class="form-control" type="email" formControlName="email"/>
+    </div>
+    <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" type="password" formControlName="password"/>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Log In"/>
+    <a class="btn btn-link" [routerLink]="['/student/register']">Register</a>
+</form>

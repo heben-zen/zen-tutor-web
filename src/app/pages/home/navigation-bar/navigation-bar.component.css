@@ -1,6 +1,17 @@
 /* -------------------------------Nav Bar----------------------------------- */
 
 
+li {
+    list-style-type: none;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 nav{
     width: 100%;
     background: var(--color-white);
@@ -16,10 +27,6 @@ nav .navLinks{
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-button {
-    margin-right: 1vw;
 }
 
 .logo{

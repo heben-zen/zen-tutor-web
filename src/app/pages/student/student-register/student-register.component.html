@@ -1,0 +1,22 @@
+<div *ngIf="formSubmitted">
+    Please confirm your email address to continue.
+</div>
+
+<div *ngIf="!formSubmitted">
+    <h1>Register!</h1>
+    <form class="container" [formGroup]="registerForm" (ngSubmit)="register()">
+        <label for="first-name" class="form-label">First Name</label>
+        <input type="text" formControlName="first-name" class="form-control">
+        <label for="last-name" class="form-label">Last Name</label>
+        <input type="text" formControlName="last-name" class="form-control">
+        <label for="phone-number" class="form-label">Phone Number</label>
+        <input type="text" formControlName="phone-number" class="form-control">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" formControlName="email" class="form-control">
+        <label for="birth-date" class="form-label">Date of Birth</label>
+        <input type="date" formControlName="birth-date" class="form-control">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" formControlName="password" class="form-control">
+        <button type="submit" class="form-label btn btn-primary">Sign Up</button>
+    </form>
+</div>
