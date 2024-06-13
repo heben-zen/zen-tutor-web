@@ -19,7 +19,6 @@ export class StudentRegisterComponent {
     "birth-date": new FormControl('')
   });
   formSubmitted = false;
-
   constructor() {
 
   }
