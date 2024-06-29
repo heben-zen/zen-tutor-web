@@ -20,6 +20,7 @@ import { StudentDashboardComponent } from './pages/student/student-dashboard/stu
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'environments/environment';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 // const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
@@ -46,7 +47,7 @@ const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment
     NgbModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [CookieService],
+  providers: [CookieService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {
