@@ -14,7 +14,9 @@ export const environment = {
     appId: "1:743793788639:web:3f2b8420da169f88810b6a",
     measurementId: "G-F6T5BZ42LB"
   },
-  API_URL: 'http://localhost:8080/api/v1'
+  API_URL: 'http://localhost:8080/api/v1',
+  VIDEO_WS_URI: 'ws://localhost',
+  VIDEO_WS_PORT: '8081'
 };
 
 /*

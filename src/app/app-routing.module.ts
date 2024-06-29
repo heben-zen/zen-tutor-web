@@ -10,6 +10,7 @@ import { EditProfile } from './pages/editprofile/editprofile.component';
 import { RegisterComponent } from './pages/tutor/register/register.component';
 import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard.component';
 import { StudentDashboardComponent } from './pages/student/student-dashboard/student-dashboard.component';
+import { LessonSpaceComponent } from './pages/lesson-space/lesson-space.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   { path: 'tutor/register', component: RegisterComponent},
   { path: 'editprofile', component: EditProfile },
   { path: 'tutor/dashboard', component: TutorDashboardComponent },
-  { path: '**', component: NotfoundComponent },
+  { path: 'lesson-space', component: LessonSpaceComponent},
+  { path: '**', component: NotfoundComponent }
   // { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 

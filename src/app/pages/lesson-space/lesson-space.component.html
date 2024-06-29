@@ -1,0 +1,26 @@
+<div class="d-flex flex-column justify-content-center align-items-center h-100">
+  <h1>Lesson Space</h1>
+  <div class="row">
+    <div class="col-6">
+      <video #local_video controls autoplay></video>
+      <!-- <button class="btn btn-primary m-3" (click)="endCall()">End call</button> -->
+    </div>
+    <div class="col-6">
+      <video #remote_video controls autoplay></video>  
+      <!-- <button class="btn btn-primary m-3" (click)="makeCall()">Init call</button> -->
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-secondary" (click)="switchOnOffCamera()">Enable/Disable Camera</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-secondary" (click)="makeCall()">Call buddy</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-secondary" (click)="hangUp()">End call</button>
+    </div>
+    
+  </div>
+  </div>
