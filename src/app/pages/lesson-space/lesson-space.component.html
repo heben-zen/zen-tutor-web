@@ -13,16 +13,19 @@
   <br/>
   <div class="row">
     <div class="col">
-      <button class="btn btn-secondary" (click)="switchOnOffCamera()">Enable/Disable Camera</button>
+      <mat-slide-toggle [checked]="isCameraOn" (click)="switchOnOffCamera()">Camera</mat-slide-toggle>
+      <!-- <mat-slide-toggle (click)="switchOnOffCamera()">
+        Enable/Disable Camera
+      </mat-slide-toggle> -->
     </div>
     <div class="col">
-      <button class="btn btn-secondary" (click)="switchOnOffMicrophone()">Enable/Disable Microphone</button>
+      <mat-slide-toggle [checked]="isAudioOn" (click)="switchOnOffMicrophone()">Microphone</mat-slide-toggle>
     </div>
     <div class="col">
-      <button class="btn btn-secondary" (click)="makeCall()">Call buddy</button>
+      <button mat-flat-button (click)="makeCall()">Call</button>
     </div>
     <div class="col">
-      <button class="btn btn-secondary" (click)="hangUp()">End call</button>
+      <button mat-button (click)="hangUp()">Hang Up</button>
     </div>
     
   </div>

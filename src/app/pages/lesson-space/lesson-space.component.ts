@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { DataService } from 'app/lesson-space/services/data.service';
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 const mediaConstraints = {
   video: {
@@ -19,7 +20,7 @@ const offerOptions = {
 @Component({
   selector: 'app-lesson-space',
   standalone: true,
-  imports: [],
+  imports: [MatSlideToggleModule, MatSlideToggle, MatButtonModule],
   templateUrl: './lesson-space.component.html',
   styleUrl: './lesson-space.component.css'
 })
@@ -27,7 +28,8 @@ export class LessonSpaceComponent implements AfterViewInit {
   @ViewChild('local_video') localVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('remote_video') remoteVideo!: ElementRef<HTMLVideoElement>;
   private localStream!: MediaStream;
-  private isCameraOn = true;
+  isCameraOn = true;
+  isAudioOn = true;
   private peerConnection!: RTCPeerConnection;
   inCall = false;
   constructor(private dataService: DataService ){}
@@ -35,7 +37,6 @@ export class LessonSpaceComponent implements AfterViewInit {
     // Initialize message handler
     this.addIncomingMessageHandler();
     this.requestMediaDevices();
-
   }
   
   private async requestMediaDevices() {
