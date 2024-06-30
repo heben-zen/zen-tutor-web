@@ -2,11 +2,11 @@
   <h1>Lesson Space</h1>
   <div class="row">
     <div class="col-6">
-      <video #local_video controls autoplay></video>
+      <video #local_video autoplay></video>
       <!-- <button class="btn btn-primary m-3" (click)="endCall()">End call</button> -->
     </div>
     <div class="col-6">
-      <video #remote_video controls autoplay></video>  
+      <video #remote_video autoplay></video>  
       <!-- <button class="btn btn-primary m-3" (click)="makeCall()">Init call</button> -->
     </div>
   </div>
@@ -20,6 +20,9 @@
     </div>
     <div class="col">
       <mat-slide-toggle [checked]="isAudioOn" (click)="switchOnOffMicrophone()">Microphone</mat-slide-toggle>
+    </div>
+    <div class="col">
+      <mat-slide-toggle [checked]="isScreenSharingOn" (click)="switchOnOffScreenSharing()">ScreenShare</mat-slide-toggle>
     </div>
     <div class="col">
       <button mat-flat-button (click)="makeCall()">Call</button>

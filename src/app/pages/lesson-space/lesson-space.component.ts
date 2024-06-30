@@ -11,6 +11,13 @@ const mediaConstraints = {
   audio: true,
 };
 
+const screenShareConstraints = {
+  video: {
+    cursor: 'always',
+  },
+  audio: false
+};
+
 
 const offerOptions = {
   offerToReceiveAudio: true,
@@ -28,8 +35,10 @@ export class LessonSpaceComponent implements AfterViewInit {
   @ViewChild('local_video') localVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('remote_video') remoteVideo!: ElementRef<HTMLVideoElement>;
   private localStream!: MediaStream;
+
   isCameraOn = true;
   isAudioOn = true;
+  isScreenSharingOn = false;
   private peerConnection!: RTCPeerConnection;
   inCall = false;
   constructor(private dataService: DataService ){}
@@ -42,6 +51,17 @@ export class LessonSpaceComponent implements AfterViewInit {
   private async requestMediaDevices() {
     this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
     this.localVideo.nativeElement.srcObject = this.localStream;
+  }
+  
+  private async requestScreenSharing() {
+    const openScreenMediaDevice = async (constraints: object) =>
+      await navigator.mediaDevices.getDisplayMedia(constraints);
+    try {
+      this.localStream = await openScreenMediaDevice(screenShareConstraints);
+      this.localVideo.nativeElement.srcObject = this.localStream;
+    } catch (error) {
+      console.error('Error accessing media devices.', error);
+    }
   }
 
   switchOnOffCamera() {
@@ -59,6 +79,17 @@ export class LessonSpaceComponent implements AfterViewInit {
       track.enabled = !track.enabled;
     });
     this.localVideo.nativeElement.srcObject = this.localStream;
+  }
+
+  async switchOnOffScreenSharing() {
+    if (!this.isScreenSharingOn) { // Screen sharing is off
+      await this.requestScreenSharing();
+    } else if (this.isCameraOn) { // Screen sharing is on and camera is on
+        this.requestMediaDevices();
+    } else {
+      this.localVideo.nativeElement.srcObject = null;
+    }
+    this.isScreenSharingOn = !this.isScreenSharingOn;
   }
 
   async makeCall() : Promise<void> {
