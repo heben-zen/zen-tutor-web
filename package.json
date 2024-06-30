@@ -1,5 +1,5 @@
 {
-  "name": "angular-server",
+  "name": "zen-tutor",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,7 @@
     "@angular/core": "~18.0.2",
     "@angular/fire": "^18.0.1",
     "@angular/forms": "~18.0.2",
-    "@angular/material": "^18.0.3",
+    "@angular/material": "^18.0.2",
     "@angular/platform-browser": "~18.0.2",
     "@angular/platform-browser-dynamic": "~18.0.2",
     "@angular/router": "~18.0.2",

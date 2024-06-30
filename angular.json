@@ -6,21 +6,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-server": {
+    "zen-tutor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "",
+      "root": ".",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-server",
+            "outputPath": "dist/zen-tutor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -85,10 +85,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-server:build:production"
+              "browserTarget": "zen-tutor:build:production"
             },
             "development": {
-              "browserTarget": "angular-server:build:development"
+              "browserTarget": "zen-tutor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-server:build"
+            "browserTarget": "zen-tutor:build"
           }
         },
         "test": {
@@ -123,7 +123,7 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "angular-server:build:production",
+            "browserTarget": "zen-tutor:build:production",
             "firebaseProject": "zen-social-media",
             "firebaseHostingSite": "zen-social-media"
           }
@@ -131,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "angular-server"
+  "defaultProject": "zen-tutor"
 }

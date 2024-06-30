@@ -21,6 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'environments/environment';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment.VIDEO_WS_PORT}`, options: {} };
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment
     NgbModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [CookieService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [CookieService, { provide: LocationStrategy, useClass: HashLocationStrategy }, provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {

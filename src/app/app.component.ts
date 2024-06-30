@@ -7,5 +7,5 @@ import { environment } from '../environments/environment';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'angular-server';
+  title = 'zen-tutor';
 }
