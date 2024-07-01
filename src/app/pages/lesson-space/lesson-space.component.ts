@@ -121,7 +121,10 @@ export class LessonSpaceComponent implements AfterViewInit {
       }
     } else if (this.isCameraOn) { // Screen sharing is on and camera is on
       this.localVideo.nativeElement.srcObject = this.localStream;
-      this.localStreamScreen.getTracks().forEach(track => track.stop());
+      this.localStreamScreen.getTracks().forEach(track => {
+        track.stop()
+        track.dispatchEvent(new Event("ended"));
+      });
 
     } else { // Screen sharing is on and camera is off
       this.localVideo.nativeElement.srcObject = null;
