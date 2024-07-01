@@ -35,6 +35,7 @@ export class LessonSpaceComponent implements AfterViewInit {
   @ViewChild('local_video') localVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('remote_video') remoteVideo!: ElementRef<HTMLVideoElement>;
   private localStream!: MediaStream;
+  private localStreamScreen!: MediaStream;
 
   isCameraOn = true;
   isAudioOn = true;
@@ -57,8 +58,8 @@ export class LessonSpaceComponent implements AfterViewInit {
     const openScreenMediaDevice = async (constraints: object) =>
       await navigator.mediaDevices.getDisplayMedia(constraints);
     try {
-      this.localStream = await openScreenMediaDevice(screenShareConstraints);
-      this.localVideo.nativeElement.srcObject = this.localStream;
+      this.localStreamScreen = await openScreenMediaDevice(screenShareConstraints);
+      this.localVideo.nativeElement.srcObject = this.localStreamScreen;
     } catch (error) {
       console.error('Error accessing media devices.', error);
     }
@@ -79,14 +80,26 @@ export class LessonSpaceComponent implements AfterViewInit {
       track.enabled = !track.enabled;
     });
     this.localVideo.nativeElement.srcObject = this.localStream;
+    this.isAudioOn = !this.isAudioOn;
   }
 
   async switchOnOffScreenSharing() {
+    
     if (!this.isScreenSharingOn) { // Screen sharing is off
       await this.requestScreenSharing();
+      if (this.inCall) {
+        const senders = this.peerConnection.getSenders();
+        if (this.isCameraOn){
+          // Replace video track with screen sharing track
+          senders.forEach((sender) => this.peerConnection.removeTrack(sender));
+        }
+        this.localStreamScreen.getTracks().forEach((track) => {
+          this.peerConnection.addTrack(track, this.localStreamScreen);
+        });
+      }
     } else if (this.isCameraOn) { // Screen sharing is on and camera is on
         this.requestMediaDevices();
-    } else {
+    } else { // Screen sharing is on and camera is off
       this.localVideo.nativeElement.srcObject = null;
     }
     this.isScreenSharingOn = !this.isScreenSharingOn;
@@ -133,6 +146,7 @@ export class LessonSpaceComponent implements AfterViewInit {
     });
     this.peerConnection.close();
     this.peerConnection = null!;
+    this.inCall = false;
   }
 
   handleCallError(error: Error) {
