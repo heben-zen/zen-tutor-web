@@ -8,7 +8,10 @@ const mediaConstraints = {
     width: { min: 640, ideal: 1280, max: 1920 },
     height: { min: 400, ideal: 720, max: 1080 },
   },
-  audio: true,
+  audio: {
+    echoCancellation: true,
+    noiseSuppression: true,
+  },
 };
 
 const screenShareConstraints = {
@@ -49,6 +52,7 @@ export class LessonSpaceComponent implements AfterViewInit {
     // Initialize message handler
     this.addIncomingMessageHandler();
     this.requestMediaDevices();
+    this.localVideo.nativeElement.volume = 0;
   }
   
   private async requestMediaDevices() {
