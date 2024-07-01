@@ -88,14 +88,19 @@ export class LessonSpaceComponent implements AfterViewInit {
     if (!this.isScreenSharingOn) { // Screen sharing is off
       await this.requestScreenSharing();
       if (this.inCall) {
+        const newTrack = this.localStreamScreen.getVideoTracks()[0]
+        if(newTrack.kind !== 'video')
+          throw new Error('Eek!?');
         const senders = this.peerConnection.getSenders();
         if (this.isCameraOn){
           // Replace video track with screen sharing track
-          senders.forEach((sender) => this.peerConnection.removeTrack(sender));
+          senders.forEach(async (sender) => {
+            if (sender.track?.kind === 'video') {
+              await sender.replaceTrack(newTrack);
+            }
+          });
         }
-        this.localStreamScreen.getTracks().forEach((track) => {
-          this.peerConnection.addTrack(track, this.localStreamScreen);
-        });
+        
       }
     } else if (this.isCameraOn) { // Screen sharing is on and camera is on
         this.requestMediaDevices();
