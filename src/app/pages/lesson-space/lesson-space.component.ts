@@ -37,6 +37,8 @@ export class LessonSpaceComponent implements AfterViewInit {
   private localStream!: MediaStream;
   private localStreamScreen!: MediaStream;
 
+  private originalVideoTrack!: MediaStreamTrack | null;
+
   isCameraOn = true;
   isAudioOn = true;
   isScreenSharingOn = false;
@@ -96,14 +98,30 @@ export class LessonSpaceComponent implements AfterViewInit {
           // Replace video track with screen sharing track
           senders.forEach(async (sender) => {
             if (sender.track?.kind === 'video') {
+              if (!this.originalVideoTrack) {
+                this.originalVideoTrack = sender.track;
+              }
               await sender.replaceTrack(newTrack);
+              newTrack.onended = () => {
+                if (this.originalVideoTrack) {
+                  sender.replaceTrack(this.originalVideoTrack).then(() => {
+                    // Update the local stream and UI as necessary
+                    this.localVideo.nativeElement.srcObject = this.localStream;
+                    // Reset the originalVideoTrack to null if you want to allow future screen shares
+                    this.originalVideoTrack = null;
+                    // Update any flags or UI elements to reflect that screen sharing has ended
+                    this.isScreenSharingOn = false;
+                  }).catch(error => console.error("Error replacing track:", error));
+                }
+              }
             }
           });
         }
         
       }
     } else if (this.isCameraOn) { // Screen sharing is on and camera is on
-        this.requestMediaDevices();
+      this.localVideo.nativeElement.srcObject = this.localStream;
+
     } else { // Screen sharing is on and camera is off
       this.localVideo.nativeElement.srcObject = null;
     }
