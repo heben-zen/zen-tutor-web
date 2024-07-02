@@ -9,6 +9,8 @@ Enabling connections between students with qualified tutors.
 - Angular
 - Spring Boot
 - PostgreSQL
+- WebRTC
+- WebSockets
 
 ## Development server
 
