@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/tutor/register/register.component';
 import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard.component';
 import { StudentDashboardComponent } from './pages/student/student-dashboard/student-dashboard.component';
 import { LessonSpaceComponent } from './pages/lesson-space/lesson-space.component';
+import { TutorsComponent } from './pages/tutors/tutors.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,8 +21,9 @@ const appRoutes: Routes = [
   { path: 'student/dashboard', component: StudentDashboardComponent},
   { path: 'tutor/login', component: TutorLoginComponent },
   { path: 'tutor/register', component: RegisterComponent},
-  { path: 'editprofile', component: EditProfile },
   { path: 'tutor/dashboard', component: TutorDashboardComponent },
+  { path: 'tutors', component: TutorsComponent},
+  { path: 'editprofile', component: EditProfile },
   { path: 'lesson-space', component: LessonSpaceComponent},
   { path: '**', component: NotfoundComponent }
   // { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
