@@ -11,7 +11,7 @@
       <div class="inputField">
         <input
           class="inputs"
-          type="text"
+          type="email"
           placeholder="Email"
           formControlName="email"
         />
@@ -36,6 +36,14 @@
         <i class="bi bi-person-lines-fill"></i>
       </div>
       <div class="inputField">
+        <textarea
+          class="inputs"
+          formControlName="bio"
+          placeholder="Tell us about yourself"
+        ></textarea>
+        <i class="bi bi-file-person-fill"></i>
+      </div>
+      <div class="inputField">
         <select class="inputs" formControlName="country">
           <option value="" disabled>Select your Country</option>
           <option value="USA">USA</option>
@@ -46,9 +54,19 @@
         <i class="bi bi-flag"></i>
       </div>
       <div class="inputField">
+        <select class="inputs" formControlName="subjects" multiple>
+          <option value="" disabled>Select your Subjects</option>
+          <option value="Math">Math</option>
+          <option value="Science">Science</option>
+          <option value="English">English</option>
+          <!-- Add more subjects as needed -->
+        </select>
+        <i class="bi bi-book"></i>
+      </div>
+      <div class="inputField">
         <input
           class="inputs"
-          type="text"
+          type="tel"
           placeholder="Phone: (+1)"
           formControlName="phone_number"
         />
@@ -60,6 +78,21 @@
           type="date"
           formControlName="birth_date"
         />
+      </div>
+      <div class="inputField">
+        <img *ngIf="selectedProfilePictureURI != null" [src]="selectedProfilePictureURI" alt="Profile Picture" class="profile_picture" />
+        <input
+          class="inputs"
+          type="file"
+          style="display: none;"
+          formControlName="profile_picture"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+        />
+        <button onclick="document.querySelector('input[formControlName=profile_picture]').click()" type="button">
+          Upload Profile Picture
+        </button>
+        <i class="bi bi-file-image"></i>
       </div>
       <div class="inputField">
         <mark class="form-text mb-2" for="password">* Password should have at least one digit, one lowercase letter, one uppercase letter, one special character, and a length of 8 to 32 characters.</mark>

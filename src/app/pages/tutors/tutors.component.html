@@ -1,0 +1,38 @@
+<h1>Tutors</h1>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <mat-list>
+            <mat-list-item *ngFor="let tutor of tutors">
+                <mat-icon *ngIf="tutor.profile_picture_name===null" aria-hidden="false" aria-label="Tutor Avatar" fontIcon="face"></mat-icon>
+                <img *ngIfElse matListAvatar src="{{ tutor.profile_picture_name }}" alt="Tutor's avatar">
+                <button (click)="selectTutor(tutor)">
+                    {{ tutor.name }}
+                </button>
+            </mat-list-item>
+          </mat-list>
+        <!-- <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Tutors
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item *ngFor="let tutor of tutors">
+                <button (click)="selectTutor(tutor)">
+                    {{ tutor.name }}
+                </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel> -->
+        <!-- Add more panels as needed -->
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- Selected tutor -->
+        <div *ngIf="selectedTutor">
+            <h2>{{ selectedTutor.name }}</h2>
+            <p>{{ selectedTutor.bio }}</p>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

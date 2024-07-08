@@ -60,9 +60,9 @@
     border: 1px solid var(--button-bg)
 }
 
-.socialLoginElement img{
-    width: 1.875rem;
-    height: 1.875rem;
+img{
+    width: 3rem;
+    height: 3rem;
     position: relative;
     top: 0rem;
     right: 0.65rem;
@@ -90,10 +90,11 @@
     width: 80%;
     position: relative;
     padding-bottom: 2rem;
+    padding-left: 2rem;
     /* hide */
 }
 
-.inputField input{
+.inputField input, .inputField select, .inputField textarea{
     width: 100%;
 }
 
@@ -105,8 +106,8 @@
 
 .inputField i{
     position: absolute;
-    top: 0.6rem;
-    left: 0.5rem;
+    top: 0.1rem;
+    left: 0.2rem;
     font-size: 1.2rem;
 }
 
