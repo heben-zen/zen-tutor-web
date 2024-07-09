@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 const tutorsURI = `${environment.API_URL}/tutors`
 interface Tutor {
@@ -21,13 +24,15 @@ interface Tutor {
 @Component({
   selector: 'app-tutors',
   standalone: true,
-  imports: [MatListModule, CommonModule, MatSidenavModule, MatExpansionModule, MatIconModule],
+  imports: [MatListModule, CommonModule, MatSidenavModule, MatExpansionModule, MatIconModule, MatCardModule, MatButtonModule, RouterModule],
   templateUrl: './tutors.component.html',
   styleUrl: './tutors.component.css'
 })
 export class TutorsComponent {
   tutors: Tutor[] = []; // Placeholder for fetched data
   selectedTutor: Tutor | null = null;
+  uploadsFolder = environment.API_HOST + '/uploads/';
+  
   
   constructor(private http: HttpClient) {} // Inject HttpClient
 
