@@ -1,5 +1,5 @@
 # Zen Tutor
-![Untitled (1)](https://github.com/heben-mx/zen-tutor-web/assets/72330887/ea4cb278-59aa-40b5-9858-4c4a1d0b685f)
+![zen-logo](https://github.com/heben-mx/zen-tutor-web/assets/72330887/4b1877a0-9e99-470e-8c4a-9251958df7a9)
 
 Enabling connections between students with qualified tutors.
 
