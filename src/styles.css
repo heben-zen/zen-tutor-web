@@ -1,5 +1,21 @@
 /* Import Google Fonts */
+/* 
+* {
+    font-family: Raleway , sans-serif !important; 
+  } 
+  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Set the global font to Roboto, excluding elements with Material Icons */
+body, body *:not(.material-icons) {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Explicitly set Material Icons font for icon elements */
+.material-icons {
+    font-family: 'Material Icons';
+}
 
 /* html{ */
 

@@ -33,25 +33,27 @@ export class TutorLoginComponent implements OnInit {
     let username = (<HTMLInputElement>document.getElementsByName("email")[0]).value;
     let password = (<HTMLInputElement>document.getElementsByName("password")[0]).value;
     // Send POST request to the server
-    const res = await fetch(this.loginEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({username, password})
-    })    
-    const data = await res.json();
-    // Check if the login was successful
-    if (data.success === true){
-      // Set the token cookie
-      this.cookieService.set('token', data.token, undefined, '/');
-      // Redirect to the dashboard
-      this.router.navigate(['/tutor/dashboard']);
-    } else {
+    try {
+
+      const res = await fetch(this.loginEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+      })    
+      const data = await res.json();
+      // Check if the login was successful
+      if (data.success === true){
+        // Set the token cookie
+        this.cookieService.set('token', data.token, undefined, '/');
+        // Redirect to the dashboard
+        this.router.navigate(['/tutor/dashboard']);
+      }
+    } catch (error) {
+      console.error(error);
       // Display an error message
-      console.warn(data);
-      alert(data.message);
-      // TODO: Display error message in the HTML
+      alert(error);
     }
   }
 
