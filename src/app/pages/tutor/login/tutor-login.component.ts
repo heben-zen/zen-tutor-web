@@ -2,11 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-zen-banner.component';
+
 
 @Component({
   selector: 'app-tutor-login',
   templateUrl: './tutor-login.component.html',
-  styleUrls: ['./tutor-login.component.css']
+  styleUrls: ['./tutor-login.component.css'],
+  standalone: true,
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent]
 })
 export class TutorLoginComponent implements OnInit {
   loginEndpoint = `${environment.API_URL}/tutors/login`;

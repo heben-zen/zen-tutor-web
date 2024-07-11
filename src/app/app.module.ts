@@ -27,13 +27,10 @@ const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    TutorLoginComponent,
     StudentLoginComponent,
     RegisterComponent,
     StudentRegisterComponent,
     StudentDashboardComponent,
-    NavigationBarComponent,
     TutorDashboardComponent
   ],
   imports: [

@@ -14,13 +14,22 @@ body{
     background-image: linear-gradient(to top, hsl(216, 74%, 36%) 0%, hsl(190, 42%, 51%) 100%);
 }
 
+
 */
+
+.btn-link {
+    text-decoration: none;
+}
+
+mat-icon {
+    margin-right: 4px;
+}
 .loginContainer{
     position: relative;
     top: -2rem;
     height: fit-content;
     width: 60em;
-    margin: 6em auto;
+    margin: 1em auto;
     display: flex;
     justify-content: space-between;
     overflow: hidden;
@@ -207,7 +216,7 @@ body{
 
     .loginContainer{
         width: 70%;
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 
     .loginInfoContainer{
