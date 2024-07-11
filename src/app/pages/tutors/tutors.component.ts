@@ -31,7 +31,7 @@ interface Tutor {
 export class TutorsComponent {
   tutors: Tutor[] = []; // Placeholder for fetched data
   selectedTutor: Tutor | null = null;
-  uploadsFolder = environment.API_HOST + '/uploads/';
+  uploadsFolder = environment.API_URL + '/uploads/';
   
   
   constructor(private http: HttpClient) {} // Inject HttpClient
