@@ -12,6 +12,7 @@ import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard
 import { StudentDashboardComponent } from './pages/student/student-dashboard/student-dashboard.component';
 import { LessonSpaceComponent } from './pages/lesson-space/lesson-space.component';
 import { TutorsComponent } from './pages/tutors/tutors.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'tutors', component: TutorsComponent},
   { path: 'editprofile', component: EditProfile },
   { path: 'lesson-space', component: LessonSpaceComponent},
+  { path: 'contact', component: ContactComponent},
   { path: '**', component: NotfoundComponent }
   // { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
