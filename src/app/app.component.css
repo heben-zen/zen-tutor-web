@@ -5,4 +5,15 @@ app-home {
     flex-direction: column;
 }
 
+.beta-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+
 
