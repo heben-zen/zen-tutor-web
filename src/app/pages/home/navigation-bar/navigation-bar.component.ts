@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,6 +9,14 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink]
 })
 export class NavigationBarComponent implements OnInit {
+  @Input()
+  showLogo: boolean = true;
+  @Input()
+  showPricing: boolean = true;
+  @Input()
+  showLogin: boolean = true;
+  @Input()
+  showTutorLogin: boolean = true;
 
   constructor() { }
 

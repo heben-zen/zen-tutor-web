@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-sm bg-body-tertiary ">
   <!-- <div class="home-section"> -->
-    <a routerLink="/" class=".navbar-brand">
-      <img class="logo" src="./assets/zen-logo.png" alt="" />
-    </a>
+    @if (showLogo) {
+      <a routerLink="/" class=".navbar-brand">
+        <img class="logo" src="./assets/zen-logo.png" alt="" />
+      </a>
+    }
   <!-- </div> -->
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,15 +12,21 @@
   <div class="collapse navbar-collapse" id="navbarNav">
       <div class="me-auto mb-2 mb-lg-0"></div>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <button routerLink="/contact" class="nav-link">Pricing</button>
-        </li>
-        <li class="nav-item">
-            <button routerLink="/tutor/login" class="nav-link">Tutor Login</button>
-        </li>
-        <li class="nav-item">
-          <button routerLink="/student/login" class="btn btn-primary">Log In</button>
-        </li>
+        @if(showPricing){
+          <li class="nav-item">
+            <button routerLink="/contact" class="nav-link">Pricing</button>
+          </li>
+        }
+        @if(showTutorLogin){
+          <li class="nav-item">
+              <button routerLink="/tutor/login" class="nav-link">Tutor Login</button>
+          </li>
+        }
+        @if(showLogin){
+          <li class="nav-item">
+            <button routerLink="/student/login" class="btn btn-primary">Log In</button>
+          </li>
+        }
         </ul>
     </div>
   </nav>
