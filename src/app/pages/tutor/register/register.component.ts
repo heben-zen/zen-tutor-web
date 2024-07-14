@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormGroup,
   Validators,
-  FormControl
+  FormControl,
+  ReactiveFormsModule
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  standalone: true,
+  imports: [NavigationBarComponent, ReactiveFormsModule]
 })
 export class RegisterComponent{
   registrationForm: FormGroup | any;
@@ -20,7 +23,7 @@ export class RegisterComponent{
   selectedProfilePicture: File | null = null;
   selectedProfilePictureURI: string | null = null;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private http: HttpClient) {
     // TODO: Fix the default country in the form
     this.registrationForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -40,8 +43,6 @@ export class RegisterComponent{
     });
   }
   async submitForm() : Promise<void> {
-    console.log("Submitting form");
-    console.log(this.registrationForm.value);
     if (this.registrationForm?.valid && this.passwordMatchValidator()) {
       // TODO add country to the request
       const new_tutor = {
@@ -58,9 +59,18 @@ export class RegisterComponent{
         formData.append('profile_picture', this.selectedProfilePicture as File, this.selectedProfilePicture?.name);
       }
       formData.append('tutor', new Blob([JSON.stringify(new_tutor)], {type: 'application/json'}));
-      this.http.post(this.register_endpoint, formData).subscribe((response) => {
-        console.log(response);
-      });
+      this.http.post(this.register_endpoint, formData, {
+        headers: {
+          'Content-Type': 'text/plain'
+      }})
+        .subscribe({
+          next: (response) => {
+            this.form_submitted = true;
+          },
+          error: (error) => {
+            alert(error.error);
+          }
+        });
     }
 
   }
@@ -71,12 +81,20 @@ export class RegisterComponent{
 
   onFileSelected(event: Event): void{
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length) {
-      this.selectedProfilePicture = input.files[0];
-      this.selectedProfilePictureURI = URL.createObjectURL(this.selectedProfilePicture);
-    } else {
-      this.selectedProfilePicture = null;
-      this.selectedProfilePictureURI = null;
+    try {
+      if (input.files && input.files.length) {
+        this.selectedProfilePicture = input.files[0];
+        // Image no greater than 96 kilobytes
+        if (this.selectedProfilePicture.size > 96 * 1024) {
+          throw new Error(`Image size too large, make sure it's 96 KB or smaller`);
+        }
+        this.selectedProfilePictureURI = URL.createObjectURL(this.selectedProfilePicture);
+      } else {
+        this.selectedProfilePicture = null;
+        this.selectedProfilePictureURI = null;
+      }
+    } catch (error) {
+      alert(error);
     }
   }
 

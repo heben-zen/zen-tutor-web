@@ -8,14 +8,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-zen-banner.component';
+import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-student-login',
   templateUrl: './student-login.component.html',
   standalone: true,
   styleUrl: './student-login.component.css',
-  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent, ReactiveFormsModule]
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, NavigationBarComponent, ReactiveFormsModule]
 })
 export class StudentLoginComponent {
   loginEndpoint = `${environment.API_URL}/students/login`;

@@ -6,7 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-zen-banner.component';
+import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LogInService } from 'app/services/log-in.service';
@@ -17,7 +17,7 @@ import { LogInService } from 'app/services/log-in.service';
   templateUrl: './tutor-login.component.html',
   styleUrls: ['./tutor-login.component.css'],
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent, ReactiveFormsModule]
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, NavigationBarComponent, ReactiveFormsModule]
 })
 export class TutorLoginComponent implements OnInit {
   loginEndpoint = `${environment.API_URL}/tutors/login`;

@@ -1,20 +1,23 @@
 <div class="registerContainer">
-  <p *ngIf="form_submitted">
-    Confirm email {{ registrationForm.value.email }} to complete registration.
-  </p>
-  <div class="registerInfoContainer" *ngIf="!form_submitted">
-    <!-- Registrarion form -->
-
-    <h1 class="title">Apply to become a tutor!</h1>
-    <!-- User Form -->
-    <form class="inputContainer" [formGroup]="registrationForm" (ngSubmit)="submitForm()" >
-      <div class="inputField">
-        <input
+  @if (form_submitted) {
+    <p >
+      Confirm email {{ registrationForm.value.email }} to complete registration.
+    </p>
+  }
+  @if (!form_submitted) {
+    <div class="registerInfoContainer">
+      <!-- Registrarion form -->
+      
+      <h1 class="title">Apply to become a tutor!</h1>
+      <!-- User Form -->
+      <form class="inputContainer" [formGroup]="registrationForm"  (ngSubmit)="submitForm()" >
+        <div class="inputField">
+          <input
           class="inputs"
           type="email"
           placeholder="Email"
           formControlName="email"
-        />
+          />
         <i class="bi bi-envelope"></i>
       </div>
       <div class="inputField">
@@ -32,7 +35,7 @@
           type="text"
           placeholder="Last Name"
           formControlName="last_name"
-        />
+          />
         <i class="bi bi-person-lines-fill"></i>
       </div>
       <div class="inputField">
@@ -69,27 +72,29 @@
           type="tel"
           placeholder="Phone: (+1)"
           formControlName="phone_number"
-        />
-        <i class="bi bi-telephone"></i>
-      </div>
-      <div class="inputField">
-        <input
+          />
+          <i class="bi bi-telephone"></i>
+        </div>
+        <div class="inputField">
+          <input
           class="inputs"
           type="date"
           formControlName="birth_date"
-        />
-      </div>
-      <div class="inputField">
-        <img *ngIf="selectedProfilePictureURI != null" [src]="selectedProfilePictureURI" alt="Profile Picture" class="profile_picture" />
-        <input
+          />
+        </div>
+        <div class="inputField">
+          @if (selectedProfilePictureURI != null) {
+            <img [src]="selectedProfilePictureURI" alt="Profile Picture" class="profile_picture" />
+          }
+          <input
           class="inputs"
           type="file"
           style="display: none;"
           formControlName="profile_picture"
           accept="image/*"
           (change)="onFileSelected($event)"
-        />
-        <button onclick="document.querySelector('input[formControlName=profile_picture]').click()" type="button">
+          />
+          <button onclick="document.querySelector('input[formControlName=profile_picture]').click()" type="button">
           Upload Profile Picture
         </button>
         <i class="bi bi-file-image"></i>
@@ -106,10 +111,10 @@
       </div>
       <div class="inputField">
         <input
-          class="inputs password"
-          type="password"
-          placeholder="Confirm Password"
-          formControlName="confirm_password"
+        class="inputs password"
+        type="password"
+        placeholder="Confirm Password"
+        formControlName="confirm_password"
         />
         <span class="lock"><i class="bi bi-lock-fill"></i></span>
         <span class="show-btn password">
@@ -130,4 +135,5 @@
     </form>
   </div>
   <img src="./assets/login.svg" alt="Login" class="imageContainer" />
+}
 </div>
