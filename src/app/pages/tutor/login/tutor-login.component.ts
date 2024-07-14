@@ -7,6 +7,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-zen-banner.component';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { LogInService } from 'app/services/log-in.service';
 
 
 @Component({
@@ -14,42 +17,44 @@ import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-z
   templateUrl: './tutor-login.component.html',
   styleUrls: ['./tutor-login.component.css'],
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent]
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent, ReactiveFormsModule]
 })
 export class TutorLoginComponent implements OnInit {
   loginEndpoint = `${environment.API_URL}/tutors/login`;
-  constructor(private cookieService: CookieService, private router: Router) {
+  credentialsForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
+  isLoggedIn: boolean = false;
+  constructor(private cookieService: CookieService, private router: Router, private http: HttpClient, private logInService: LogInService) {
    }
 
   ngOnInit() {
-    if (this.cookieService.check('token')) {
-      // Redirect to the dashboard
-      this.router.navigate(['/tutor/dashboard']);
-    }
+    this.logInService.isLoggedIn().then((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      if (this.isLoggedIn) this.router.navigate(['/tutor/dashboard']);
+    });
   }
 
-  async onLogin() {
-    // Get the email and password from the form
-    let username = (<HTMLInputElement>document.getElementsByName("email")[0]).value;
-    let password = (<HTMLInputElement>document.getElementsByName("password")[0]).value;
-    // Send POST request to the server
+  async onLogin() {    
     try {
-
-      const res = await fetch(this.loginEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({username, password})
-      })    
-      const data = await res.json();
-      // Check if the login was successful
-      if (data.success === true){
-        // Set the token cookie
-        this.cookieService.set('token', data.token, undefined, '/');
-        // Redirect to the dashboard
-        this.router.navigate(['/tutor/dashboard']);
-      }
+        const credentials = { 
+          username: this.credentialsForm.get('email')?.value,
+          password: this.credentialsForm.get('password')?.value
+         }
+        this.http.post(this.loginEndpoint, credentials, { responseType: 'text' })
+          .subscribe((data: any) => {
+            // Save the token in a cookie
+            this.cookieService.set('token', data);
+            this.cookieService.set('username', credentials.username!);
+            // Redirect to the dashboard
+            this.router.navigate(['/tutor/dashboard']);
+          },
+          error => {
+            // Display an error message
+            alert(error.error);
+          }
+        );
     } catch (error) {
       console.error(error);
       // Display an error message

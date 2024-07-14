@@ -3,16 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { TutorLoginComponent } from './pages/tutor/login/tutor-login.component';
-import { StudentLoginComponent } from './pages/student/login/student-login.component';
 import { RegisterComponent } from './pages/tutor/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { NavigationBarComponent } from './pages/home/navigation-bar/navigation-bar.component';
 import { TutorDashboardComponent } from './pages/tutor/dashboard/tutor-dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
 import { StudentRegisterComponent } from './pages/student/student-register/student-register.component';
@@ -27,11 +23,9 @@ const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment
 @NgModule({
   declarations: [
     AppComponent,
-    StudentLoginComponent,
     RegisterComponent,
     StudentRegisterComponent,
-    StudentDashboardComponent,
-    TutorDashboardComponent
+    StudentDashboardComponent
   ],
   imports: [
     BrowserModule,

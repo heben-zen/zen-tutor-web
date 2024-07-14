@@ -3,14 +3,22 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { UpperZenBannerComponent } from 'app/components/upper-zen-banner/upper-zen-banner.component';
 
 @Component({
   selector: 'app-student-login',
   templateUrl: './student-login.component.html',
-  styleUrl: './student-login.component.css'
+  standalone: true,
+  styleUrl: './student-login.component.css',
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, UpperZenBannerComponent, ReactiveFormsModule]
 })
 export class StudentLoginComponent {
-  loginEndpoint = `${environment.API_URL}/users/login`;
+  loginEndpoint = `${environment.API_URL}/students/login`;
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')

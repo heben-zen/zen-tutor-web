@@ -1,4 +1,29 @@
-<h1 class="">
+<app-upper-zen-banner></app-upper-zen-banner>
+<br>
+<div class="loginContainer">
+  <div class="loginInfoContainer">
+    <h2 class="h2">Welcome back!</h2>
+    <p class="p">Login to your account to continue</p>
+    <form [formGroup]="loginForm" (ngSubmit)="logIn()" class="inputContainer">
+      <mat-form-field>
+        <mat-icon matTextPrefix>mail</mat-icon>
+        <mat-label>email</mat-label>
+        <input type="email" matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-icon matTextPrefix>password</mat-icon>
+        <mat-label>password</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+      <button type="submit" class="btn btn-primary">Login</button>
+      <br>
+      <p>Not a student yet? <button routerLink="/student/register" class="btn btn-success">Sign Up</button></p>
+      <p>Trying to log in as a Tutor? <button routerLink="/tutor/login" class="btn btn-link">Go to Student page</button></p>
+    </form>
+  </div>
+  <img src="./assets/student-2.png" alt="Login" class="imageContainer">
+</div>
+<!-- <h1 class="">
     Log In as a Student
 </h1>
 <form class="container-md" [formGroup]="loginForm" (ngSubmit)="logIn()">
@@ -12,4 +37,4 @@
     </div>
     <input class="btn btn-primary" type="submit" value="Log In"/>
     <a class="btn btn-link" [routerLink]="['/student/register']">Register</a>
-</form>
+</form> -->

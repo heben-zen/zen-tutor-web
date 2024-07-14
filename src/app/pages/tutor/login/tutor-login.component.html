@@ -1,48 +1,27 @@
 <app-upper-zen-banner></app-upper-zen-banner>
 <br>
-<div class="loginContainer">
-  <div class="loginInfoContainer">
-    <h2 class="h2">Welcome back tutor!</h2>
-    <p class="p">Login to your account to continue</p>
-    <!-- <div class="socialLogin">
-      <div class="socialLoginElement">
-        <img src="./assets/google.svg" alt="Google icon" >
-        <span>Google</span>
-      </div>
-      <div class="socialLoginElement">
-        <img src="./assets/facebook.svg" alt="Google icon">
-        <span>Facebook</span>
-      </div>
+@if (!isLoggedIn){
+  <div class="loginContainer">
+    <div class="loginInfoContainer">
+      <h2 class="h2">Welcome back tutor!</h2>
+      <p class="p">Login to your account to continue</p>
+      <form (submit)="onLogin()" class="inputContainer" [formGroup]="credentialsForm">
+        <mat-form-field>
+          <mat-icon matTextPrefix>mail</mat-icon>
+          <mat-label>email</mat-label>
+          <input type="email" matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matTextPrefix>password</mat-icon>
+          <mat-label>password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <br>
+        <p>Not a tutor yet? <button routerLink="/tutor/register" class="btn btn-link">Sign Up</button></p>
+        <p>Trying to log in as a Student? <button routerLink="/student/login" class="btn btn-success">Go to Student page</button></p>
+      </form>
     </div>
-    <p>or</p> -->
-    <form (submit)="onLogin()" class="inputContainer">
-      <mat-form-field>
-        <mat-icon matTextPrefix>mail</mat-icon>
-        <mat-label>email</mat-label>
-        <input type="email" matInput name="email">
-      </mat-form-field>
-      <!-- <div class="inputField">
-        <input name="email" class="inputs" type="text" placeholder="Email" >
-        <i class="bi bi-person-circle"></i>
-      </div> -->
-      <mat-form-field>
-        <mat-icon matTextPrefix>password</mat-icon>
-        <mat-label>password</mat-label>
-        <input type="password" matInput name="password">
-      </mat-form-field>
-      <!-- <div class="inputField">
-        <input name="password" class="inputs password" type="password" id="password" placeholder="Password" >
-        <i class="bi bi-lock-fill"></i>
-        <i class="bi bi-eye-slash show"></i>
-      </div> -->
-
-      <button type="submit" class="btn btn-primary">Login</button>
-      <br>
-      <p>Not a tutor yet? <button routerLink="/tutor/register" class="btn btn-link">Sign Up</button></p>
-      <p>Trying to log in as a Student? <button routerLink="/student/login" class="btn btn-success">Go to Student page</button></p>
-    </form>
-
-    
+    <img src="./assets/login.svg" alt="Login" class="imageContainer">
   </div>
-  <img src="./assets/login.svg" alt="Login" class="imageContainer">
-</div>
+}
