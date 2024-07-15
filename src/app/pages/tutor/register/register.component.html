@@ -13,7 +13,7 @@
       <form class="inputContainer" [formGroup]="registrationForm"  (ngSubmit)="submitForm()" >
         <div class="inputField">
           <input
-          class="inputs"
+          class="inputs form-control"
           type="email"
           placeholder="Email"
           formControlName="email"
@@ -22,7 +22,7 @@
       </div>
       <div class="inputField">
         <input
-          class="inputs"
+          class="inputs form-control"
           type="text"
           placeholder="First Name"
           formControlName="first_name"
@@ -31,7 +31,7 @@
       </div>
       <div class="inputField">
         <input
-          class="inputs"
+          class="inputs form-control"
           type="text"
           placeholder="Last Name"
           formControlName="last_name"
@@ -40,14 +40,14 @@
       </div>
       <div class="inputField">
         <textarea
-          class="inputs"
+          class="inputs form-control"
           formControlName="bio"
           placeholder="Tell us about yourself"
         ></textarea>
         <i class="bi bi-file-person-fill"></i>
       </div>
       <div class="inputField">
-        <select class="inputs" formControlName="country">
+        <select class="inputs form-control" formControlName="country">
           <option value="" disabled>Select your Country</option>
           <option value="USA">USA</option>
           <option value="Canada">Canada</option>
@@ -57,7 +57,7 @@
         <i class="bi bi-flag"></i>
       </div>
       <div class="inputField">
-        <select class="inputs" formControlName="subjects" multiple>
+        <select class="inputs form-control" formControlName="subjects" multiple>
           <option value="" disabled>Select your Subjects</option>
           <option value="Math">Math</option>
           <option value="Science">Science</option>
@@ -68,7 +68,7 @@
       </div>
       <div class="inputField">
         <input
-          class="inputs"
+          class="form-control"
           type="tel"
           placeholder="Phone: (+1)"
           formControlName="phone_number"
@@ -77,7 +77,7 @@
         </div>
         <div class="inputField">
           <input
-          class="inputs"
+          class="inputs form-control"
           type="date"
           formControlName="birth_date"
           />
@@ -87,7 +87,7 @@
             <img [src]="selectedProfilePictureURI" alt="Profile Picture" class="profile_picture" />
           }
           <input
-          class="inputs"
+          class="inputs form-control"
           type="file"
           style="display: none;"
           formControlName="profile_picture"
@@ -102,7 +102,7 @@
       <div class="inputField">
         <mark class="form-text mb-2" for="password">* Password should have at least one digit, one lowercase letter, one uppercase letter, one special character, and a length of 8 to 32 characters.</mark>
         <input
-        class="inputs password mt-2"
+        class="inputs form-control password mt-2"
         type="password"
         placeholder="Password"
         formControlName="password"
@@ -111,7 +111,7 @@
       </div>
       <div class="inputField">
         <input
-        class="inputs password"
+        class="inputs form-control password"
         type="password"
         placeholder="Confirm Password"
         formControlName="confirm_password"

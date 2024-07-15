@@ -59,18 +59,26 @@ export class RegisterComponent{
         formData.append('profile_picture', this.selectedProfilePicture as File, this.selectedProfilePicture?.name);
       }
       formData.append('tutor', new Blob([JSON.stringify(new_tutor)], {type: 'application/json'}));
-      this.http.post(this.register_endpoint, formData, {
-        headers: {
-          'Content-Type': 'text/plain'
-      }})
-        .subscribe({
-          next: (response) => {
-            this.form_submitted = true;
-          },
-          error: (error) => {
-            alert(error.error);
-          }
-        });
+      // formData.append('tutor', JSON.stringify(new_tutor));
+      console.log(formData);
+      try {
+        const response = await fetch(this.register_endpoint, {
+          method: 'POST',
+          body: formData,
+          // headers: {
+          //   "Content-Type": "multipart/form-data",
+          // }
+        })
+        if (response.ok) {
+          this.form_submitted = true;
+        } else {
+          const error = await response.json()
+          alert(error.error);
+        }
+      } catch (error) {
+          console.error(error);
+          alert(error);
+        };
     }
 
   }
