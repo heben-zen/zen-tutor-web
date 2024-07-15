@@ -1,9 +1,13 @@
-<div class="registerContainer">
-  @if (form_submitted) {
+@if (form_submitted) {
+  <navigation-bar></navigation-bar>
+  <div class="container p-3">
+    <h2>Congratulations</h2>
     <p >
       Confirm email {{ registrationForm.value.email }} to complete registration.
     </p>
-  }
+  </div>
+}
+<div class="registerContainer">
   @if (!form_submitted) {
     <div class="registerInfoContainer">
       <!-- Registrarion form -->
