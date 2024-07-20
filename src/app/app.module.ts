@@ -9,8 +9,6 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { StudentRegisterComponent } from './pages/student/student-register/student-register.component';
-import { StudentDashboardComponent } from './pages/student/student-dashboard/student-dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'environments/environment';
@@ -21,8 +19,6 @@ const config: SocketIoConfig = { url: `${environment.VIDEO_WS_URI}:${environment
 @NgModule({
   declarations: [
     AppComponent,
-    StudentRegisterComponent,
-    StudentDashboardComponent
   ],
   imports: [
     BrowserModule,
