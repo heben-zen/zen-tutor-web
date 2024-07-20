@@ -42,8 +42,6 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
 import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { Student } from '../Student';
-
 
 @Component({
   selector: 'app-student-register',
