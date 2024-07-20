@@ -1,15 +1,29 @@
-<div *ngIf="formSubmitted">
-    Please confirm your email address to continue.
-</div>
+<!-- <navigation-bar></navigation-bar> -->
+@if(formSubmitted){
+    <navigation-bar></navigation-bar>
+    <h1>Thank you for registering!</h1>
+    <p>First Name: {{form.value['first_name']}}</p>
+    <p>Last Name: {{form.value['last_name']}}</p>
+    <!-- <p>Phone Number: {{form.value['phone_number']}}</p> -->
+    <p>Please verify email sent to: {{form.value['email']}}</p>
+    <p>Date of Birth: {{form.value['birth_date']}}</p>
+}
 
-<div *ngIf="!formSubmitted">
-    <h1>Register!</h1>
-    <form class="container" [formGroup]="registerForm" (ngSubmit)="register()">
+@if (!formSubmitted){
+    <div class="container-fluid px-0">
+    <!-- <form class="container" [formGroup]="form" (ngSubmit)="register()">
         <label for="first-name" class="form-label">First Name</label>
         <input type="text" formControlName="first-name" class="form-control">
         <label for="last-name" class="form-label">Last Name</label>
         <input type="text" formControlName="last-name" class="form-control">
-        <label for="phone-number" class="form-label">Phone Number</label>
+        <mat-form-field>
+            <mat-label>Phone number</mat-label>
+            <tel-input formControlName="tel" required></tel-input>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Include area code</mat-hint>
+          </mat-form-field>
+          <p>Entered value: {{form.valueChanges | async | json}}</p>
+        <mat-form-field />
         <input type="text" formControlName="phone-number" class="form-control">
         <label for="email" class="form-label">Email</label>
         <input type="email" formControlName="email" class="form-control">
@@ -18,5 +32,65 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" formControlName="password" class="form-control">
         <button type="submit" class="form-label btn btn-primary">Sign Up</button>
-    </form>
-</div>
+    </form> -->
+    <div class="container-fluid">
+            <h1>Complete your profile</h1>
+            <form class="my-3" [formGroup]="form" (submit)="submitRegisterForm()">
+                    <div class="row">
+                        <mat-form-field class="col">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" matInput formControlName="first_name" required>
+                            <mat-icon matSuffix>person</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="col">
+                            <mat-label>Last Name</mat-label>
+                            <input type="text" matInput formControlName="last_name">
+                            <mat-icon matSuffix>person</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Phone number</mat-label>
+                            <example-tel-input formControlName="phone_number"></example-tel-input>
+                            <mat-icon matSuffix>phone</mat-icon>
+                            <mat-hint>Include area code</mat-hint>
+                        </mat-form-field>
+                        <!-- <p>Entered value: {{form.valueChanges | async | json}}</p> -->
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" required>
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birth_date">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password" required>
+                            <mat-icon matSuffix>lock</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Confirm Password</mat-label>
+                            <input type="password" matInput formControlName="confirm_password" required>
+                            <mat-icon matSuffix>lock</mat-icon>
+                        </mat-form-field>
+    
+                    </div>
+                    <button mat-flat-button>Register</button>
+            </form>
+        </div>
+        <img src="../../../../assets/living-room.jpg" alt="Student room picture">
+    </div>
+}
+
+  
+  
+  <!-- Copyright 2024 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at https://angular.io/license -->

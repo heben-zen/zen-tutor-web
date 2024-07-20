@@ -124,9 +124,9 @@
         <span class="show-btn password">
           <i class="eye bi bi-eye-fill" id="eye"></i>
         </span>
-        <div *ngIf="registrationForm.errors?.mismatch">
-          Passwords do not match.
-        </div>
+        @if (registrationForm.errors?.mismatch) {
+          <div>Passwords do not match.</div>
+        }
       </div>
       <!-- Submit form -->
       <button class="btn btn-primary" type="submit" id="register" [disabled]="!registrationForm.valid">Register</button>

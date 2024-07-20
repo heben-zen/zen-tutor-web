@@ -1,0 +1,38 @@
+.container-fluid {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    height: 100vh;
+}
+
+.container-fluid>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 34px; /* 34px is the height of the footer */
+}
+
+img {
+    height: 100%;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1000px){
+    img{
+        display: none;
+    }
+
+    .registerContainer{
+        width: 70%;
+        margin-top: 3rem;
+    }
+
+    .registerInfoContainer{
+        width: 100%;
+    }
+}

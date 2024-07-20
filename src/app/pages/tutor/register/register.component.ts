@@ -5,7 +5,6 @@ import {
   FormControl,
   ReactiveFormsModule
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 
@@ -23,7 +22,7 @@ export class RegisterComponent{
   selectedProfilePicture: File | null = null;
   selectedProfilePictureURI: string | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     // TODO: Fix the default country in the form
     this.registrationForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),

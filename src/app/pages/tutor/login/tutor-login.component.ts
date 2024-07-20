@@ -30,31 +30,33 @@ export class TutorLoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.logInService.isLoggedIn().then((isLoggedIn) => {
+    this.logInService.isLoggedInAsTutor().then((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) this.router.navigate(['/tutor/dashboard']);
     });
   }
 
   async onLogin() {    
+    const credentials = { 
+      username: this.credentialsForm.get('email')?.value,
+      password: this.credentialsForm.get('password')?.value
+    }
     try {
-        const credentials = { 
-          username: this.credentialsForm.get('email')?.value,
-          password: this.credentialsForm.get('password')?.value
-         }
-        this.http.post(this.loginEndpoint, credentials, { responseType: 'text' })
-          .subscribe((data: any) => {
-            // Save the token in a cookie
-            this.cookieService.set('token', data);
-            this.cookieService.set('username', credentials.username!);
-            // Redirect to the dashboard
-            this.router.navigate(['/tutor/dashboard']);
+        const res = await fetch(this.loginEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
           },
-          error => {
-            // Display an error message
-            alert(error.error);
-          }
-        );
+          body: JSON.stringify(credentials)
+        })
+        const token = await res.text();
+        if (res.ok) {
+          this.cookieService.set('token', token);
+          this.cookieService.set('username', credentials.username!);
+          this.router.navigate(['/tutor/dashboard']);
+        } else {
+          alert(token);
+        }
     } catch (error) {
       console.error(error);
       // Display an error message

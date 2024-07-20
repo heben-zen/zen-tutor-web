@@ -16,10 +16,11 @@ export class TutorDashboardComponent implements OnInit {
 
   constructor(private cookieService : CookieService, private router: Router, private logInService: LogInService) {
     // Check if the user is already logged in
-    if (!logInService.isLoggedIn()) {
-      // Redirect to the login page
-      this.router.navigate(['/tutor/login']);
-    }
+    logInService.isLoggedInAsTutor().then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        // Redirect to the login page
+        this.router.navigate(['/tutor/login']);
+      }});
    }
 
   logOut() {
