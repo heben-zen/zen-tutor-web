@@ -1,12 +1,13 @@
 <!-- <navigation-bar></navigation-bar> -->
 @if(formSubmitted){
     <navigation-bar></navigation-bar>
-    <h1>Thank you for registering!</h1>
-    <p>First Name: {{form.value['first_name']}}</p>
-    <p>Last Name: {{form.value['last_name']}}</p>
-    <!-- <p>Phone Number: {{form.value['phone_number']}}</p> -->
-    <p>Please verify email sent to: {{form.value['email']}}</p>
-    <p>Date of Birth: {{form.value['birth_date']}}</p>
+    <div class="container my-5">
+        <h2>{{form.value['first_name']}}, Thank you for registering!</h2>
+        <!-- <p>Phone Number: {{form.value['phone_number']}}</p> -->
+         <p>To start learning with us, please verify your email:</p>
+        <p><b>{{form.value['email']}}</b></p>
+        <button class="btn btn-primary">Back to login</button>
+    </div>
 }
 
 @if (!formSubmitted){
