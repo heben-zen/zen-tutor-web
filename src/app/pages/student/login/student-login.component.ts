@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 import { LogInService } from 'app/services/log-in.service';
 
@@ -24,7 +23,11 @@ export class StudentLoginComponent implements OnInit{
     email: new FormControl(''),
     password: new FormControl('')
   });
-  constructor(private cookieService: CookieService, private router: Router, private logInService: LogInService) {
+  isEmailConfirmed = false;
+  constructor(private cookieService: CookieService,
+    private router: Router,
+    private logInService: LogInService,
+    private activatedRoute: ActivatedRoute) {
   }
   ngOnInit(): void {
     // Check if the user is already logged in
@@ -35,11 +38,19 @@ export class StudentLoginComponent implements OnInit{
         this.router.navigate(['/student/dashboard']);
       } else console.log("Student is not logged in");
     });
+    this.activatedRoute.queryParams.subscribe(params => {
+      const isEmailConfirmed = params['emailConfirmed'];
+      console.log(isEmailConfirmed);
+      if (isEmailConfirmed === 'true') {
+        this.isEmailConfirmed = true;
+      }
+    })
   }
 
   async logIn() {
     // Get the email and password from the form
-    const {email, password} = this.loginForm.value;
+    const {email,
+      password} = this.loginForm.value;
     const username : string = email ?? "";
     // Send POST request to the server
     const payload = JSON.stringify({username, password})

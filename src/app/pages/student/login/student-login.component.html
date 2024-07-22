@@ -2,6 +2,9 @@
 <br>
 <div class="loginContainer">
   <div class="loginInfoContainer">
+    @if (isEmailConfirmed){
+      <p class="alert alert-primary">Congratulations! Your email was confirmed, now you can log in.</p>
+    }
     <h2 class="h2">Welcome back!</h2>
     <p class="p">Login to your account to continue</p>
     <form [formGroup]="loginForm" (ngSubmit)="logIn()" class="inputContainer">
