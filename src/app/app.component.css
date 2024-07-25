@@ -14,6 +14,18 @@ app-home {
     text-align: center;
     padding: 10px 0;
     z-index: 1000; /* Ensure it's above other content */
-  }
+}
+.btn{
+    border-radius: 999px;
+    padding: 6px 18px;
+}
+.btn-primary {
+    background-color: #5e17eb; /* New primary color */
+    border-color: #5e17eb; /* New primary border color */
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #6e30ec; /* New primary color on hover/focus */
+    border-color: #6e30ec; /* New primary border color on hover/focus */
+}
 
 
