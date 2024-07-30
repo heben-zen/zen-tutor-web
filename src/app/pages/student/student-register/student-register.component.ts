@@ -42,6 +42,7 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
 import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-student-register',
@@ -60,18 +61,21 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     NavigationBarComponent,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    RouterLink
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentRegisterComponent {
-  registerEndpoint = `${environment.API_URL}/students/register`
+  registerEndpoint = `${environment.API_URL}/registration/student`
   formSubmitted = false;
+  email_resent = false;
+  email_resend_error: boolean = false;
   readonly form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('thecatura.ad@gmail.com', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
     "confirm_password": new FormControl('', [Validators.required]),
-    "first_name": new FormControl('', [Validators.required]),
+    "first_name": new FormControl('Alfredo', [Validators.required]),
     "last_name": new FormControl(''),
     "phone_number": new FormControl(''),
     "birth_date": new FormControl(''),
@@ -100,7 +104,6 @@ export class StudentRegisterComponent {
       delete student.confirm_password
       delete student.first_name
       delete student.last_name
-      console.log(student);
       formData.append('student', new Blob([JSON.stringify(student)], {type: 'application/json'}))
       try {
         const response = await fetch(this.registerEndpoint, 
@@ -125,6 +128,24 @@ export class StudentRegisterComponent {
 
   passwordMatchValidator() {
     return this.form.get('password')?.value === this.form.get('confirm_password')?.value
+  }
+
+  async resendConfirmationEmail() {
+    this.email_resent = false;
+    this.email_resend_error = false;
+    const email = this.form.get('email')?.value;
+    const endpoint = `${environment.API_URL}/registration/resend-confirmation?email=${email}`
+    fetch(endpoint, {method: 'GET'}).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to resend confirmation email')
+      }
+      this.email_resent = true;
+    }).catch(error => {
+      console.error(error);
+      this.email_resend_error = true;
+    }).finally(() => {
+      this.changeDetectorRef.detectChanges();
+    })
   }
 }
 // @Component({

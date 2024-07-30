@@ -4,10 +4,10 @@
       <mat-nav-list>
         <mat-list>
             <mat-list-item *ngFor="let tutor of tutors">
-                @if (tutor.profile_picture_name === null) {
+                @if (tutor.profilePicture_name === null) {
                   <mat-icon matListItemAvatar aria-hidden="false" aria-label="Tutor Avatar" fontIcon="face"></mat-icon>
                 } @else {
-                  <img matListItemAvatar src="{{ uploadsFolder }}{{ tutor.profile_picture_name }}" alt="Tutor's avatar">
+                  <img matListItemAvatar src="{{ uploadsFolder }}{{ tutor.profilePicture_name }}" alt="Tutor's avatar">
                 }
                 <button mat-button (click)="selectTutor(tutor)">
                     {{ tutor.name }}
@@ -40,8 +40,8 @@
              <mat-card-title>{{ selectedTutor.name }}</mat-card-title>
              <!-- <mat-card-subtitle>{{ selectedTutor.bio }}</mat-card-subtitle> -->
            </mat-card-header>
-           @if (selectedTutor.profile_picture_name) {
-             <img mat-card-image src="{{ uploadsFolder }}{{ selectedTutor.profile_picture_name}}" alt="Photo of {{ selectedTutor.name }}">
+           @if (selectedTutor.profilePicture_name) {
+             <img mat-card-image src="{{ uploadsFolder }}{{ selectedTutor.profilePicture_name}}" alt="Photo of {{ selectedTutor.name }}">
            } @else {
              <img mat-card-image src="https://via.placeholder.com/150" alt="Photo of {{ selectedTutor.name }}">
            }

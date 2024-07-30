@@ -63,9 +63,9 @@
       <div class="inputField">
         <select class="inputs form-control" formControlName="subjects" multiple>
           <option value="" disabled>Select your Subjects</option>
-          <option value="Math">Math</option>
-          <option value="Science">Science</option>
-          <option value="English">English</option>
+          @for (subject of subjects; track $index) {
+            <option value="{{ subject }}">{{ subject }}</option>
+          }
           <!-- Add more subjects as needed -->
         </select>
         <i class="bi bi-book"></i>

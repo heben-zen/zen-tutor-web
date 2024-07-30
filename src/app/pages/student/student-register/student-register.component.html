@@ -1,12 +1,20 @@
 <!-- <navigation-bar></navigation-bar> -->
 @if(formSubmitted){
     <navigation-bar></navigation-bar>
-    <h1>Thank you for registering!</h1>
-    <p>First Name: {{form.value['first_name']}}</p>
-    <p>Last Name: {{form.value['last_name']}}</p>
-    <!-- <p>Phone Number: {{form.value['phone_number']}}</p> -->
-    <p>Please verify email sent to: {{form.value['email']}}</p>
-    <p>Date of Birth: {{form.value['birth_date']}}</p>
+    <div class="container py-3">
+        <h1>Thank you for registering {{form.value['first_name']}}!</h1>
+        <!-- <p>Phone Number: {{form.value['phone_number']}}</p> -->
+        <p>Please verify email sent to: {{form.value['email']}}</p>
+        @if(email_resent){
+            <p class="alert alert-primary m-3">Email confirmation resent</p>
+        } 
+        @if (email_resend_error === true){
+            <p class="alert alert-danger m-3">Email confirmation resend failed</p>
+        }
+        <button mat-flat-button (click)="resendConfirmationEmail()">Resend email confirmation</button>
+        <a routerLink="/student/login"><button mat-button>Click here to login</button></a>
+    </div>
+
 }
 
 @if (!formSubmitted){
@@ -45,7 +53,7 @@
                         <mat-form-field class="col">
                             <mat-label>Last Name</mat-label>
                             <input type="text" matInput formControlName="last_name">
-                            <mat-icon matSuffix>person</mat-icon>
+                            <!-- <mat-icon matSuffix>person</mat-icon> -->
                         </mat-form-field>
                     </div>
                     <div class="row">
@@ -63,13 +71,13 @@
                         </mat-form-field>
                     </div>
                     <div class="row">
-                        <mat-form-field appearance="fill">
+                        <!-- <mat-form-field appearance="fill">
                             <mat-label>Date of Birth</mat-label>
                             <input matInput [matDatepicker]="picker" formControlName="birth_date">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
+                        </mat-form-field> -->
                         <mat-form-field>
                             <mat-label>Password</mat-label>
                             <input type="password" matInput formControlName="password" required>
