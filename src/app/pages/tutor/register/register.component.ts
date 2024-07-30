@@ -17,10 +17,12 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
 })
 export class RegisterComponent{
   registrationForm: FormGroup | any;
-  register_endpoint = `${environment.API_URL}/tutors/register`;
+  register_endpoint = `${environment.API_URL}/registration/tutor`;
   form_submitted = false;
   selectedProfilePicture: File | null = null;
   selectedProfilePictureURI: string | null = null;
+  subjects: any[] = [];
+
 
   constructor() {
     // TODO: Fix the default country in the form
@@ -40,7 +42,20 @@ export class RegisterComponent{
       ]),
       confirm_password: new FormControl('', [Validators.required]),
     });
+    // Fetch available subjects
+    fetch(`${environment.API_URL}/subjects`).then(async (response) => {
+      if (response.ok) {
+        const subjects = await response.json();
+        // this.registrationForm.controls.subjects.setValue(subjects);
+        this.subjects = subjects;
+      } else {
+        alert('Failed to fetch subjects');
+      }
+    });
+
   }
+
+
   async submitForm() : Promise<void> {
     if (this.registrationForm?.valid && this.passwordMatchValidator()) {
       // TODO add country to the request
@@ -51,6 +66,7 @@ export class RegisterComponent{
       delete new_tutor.confirm_password;
       delete new_tutor.first_name;
       delete new_tutor.last_name;
+      delete new_tutor.subjects;
       new_tutor.name = this.registrationForm.value.first_name;
       new_tutor.surname = this.registrationForm.value.last_name;
       const formData = new FormData();
@@ -58,7 +74,7 @@ export class RegisterComponent{
         formData.append('profile_picture', this.selectedProfilePicture as File, this.selectedProfilePicture?.name);
       }
       formData.append('tutor', new Blob([JSON.stringify(new_tutor)], {type: 'application/json'}));
-      // formData.append('tutor', JSON.stringify(new_tutor));
+      formData.append('subjects', new Blob([JSON.stringify(this.registrationForm.value.subjects)], {type: 'application/json'}));
       console.log(formData);
       try {
         const response = await fetch(this.register_endpoint, {
@@ -68,11 +84,9 @@ export class RegisterComponent{
           //   "Content-Type": "multipart/form-data",
           // }
         })
+        console.log(response);
         if (response.ok) {
           this.form_submitted = true;
-        } else {
-          const error = await response.json()
-          alert(error.error);
         }
       } catch (error) {
           console.error(error);

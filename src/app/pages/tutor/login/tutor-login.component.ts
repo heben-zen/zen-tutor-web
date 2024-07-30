@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -26,14 +26,27 @@ export class TutorLoginComponent implements OnInit {
     password: new FormControl('')
   });
   isLoggedIn: boolean = false;
-  constructor(private cookieService: CookieService, private router: Router, private http: HttpClient, private logInService: LogInService) {
+  isEmailConfirmed = false;
+  constructor(private cookieService: CookieService, private router: Router, private http: HttpClient, private logInService: LogInService, private activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit() {
+    // Confirm email if token is present
+    this.activatedRoute.queryParams.subscribe(params => {
+      const token = params['token'];
+      if (!token) return;
+      fetch(`${environment.API_URL}/registration/confirm-account?token=${token}`)
+        .then(res => {
+          if (res.ok) {
+            this.isEmailConfirmed = true;
+          }
+        })
+    })
     this.logInService.isLoggedInAsTutor().then((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) this.router.navigate(['/tutor/dashboard']);
     });
+
   }
 
   async onLogin() {    

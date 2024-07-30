@@ -38,12 +38,16 @@ export class StudentLoginComponent implements OnInit{
         this.router.navigate(['/student/dashboard']);
       } else console.log("Student is not logged in");
     });
+    // Check if the email was confirmed
     this.activatedRoute.queryParams.subscribe(params => {
-      const isEmailConfirmed = params['emailConfirmed'];
-      console.log(isEmailConfirmed);
-      if (isEmailConfirmed === 'true') {
-        this.isEmailConfirmed = true;
-      }
+      const token = params['token'];
+      if (!token) return;
+      fetch(`${environment.API_URL}/registration/confirm-account?token=${token}`)
+        .then(res => {
+          if (res.ok) {
+            this.isEmailConfirmed = true;
+          }
+        })
     })
   }
 

@@ -17,7 +17,7 @@ interface Tutor {
   surname: string;
   email: string;
   bio: string;
-  profile_picture_name: string;
+  profilePicture_name: string;
   enabled: boolean;
 }
 
