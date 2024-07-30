@@ -69,6 +69,7 @@ import { RouterLink } from '@angular/router';
 export class StudentRegisterComponent {
   registerEndpoint = `${environment.API_URL}/registration/student`
   formSubmitted = false;
+  formSubmissionInProgress = false;
   email_resent = false;
   email_resend_error: boolean = false;
   readonly form = new FormGroup({
@@ -87,6 +88,8 @@ export class StudentRegisterComponent {
 
   async submitRegisterForm(){
     if (this.form.valid && this.passwordMatchValidator()) {
+      this.formSubmissionInProgress = true;
+      this.changeDetectorRef.detectChanges();
       const formData = new FormData();
       // Ensure phone_number is treated correctly
       let phoneNumberValue = this.form.get('phone_number')?.value;
@@ -122,7 +125,10 @@ export class StudentRegisterComponent {
     } catch (error) {
         console.error(error);
         alert(error);
-      };
+      } finally{
+        this.formSubmissionInProgress = false;
+        this.changeDetectorRef.detectChanges();
+      }
     } 
   }
 
