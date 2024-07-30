@@ -73,10 +73,10 @@ export class StudentRegisterComponent {
   email_resent = false;
   email_resend_error: boolean = false;
   readonly form = new FormGroup({
-    email: new FormControl('thecatura.ad@gmail.com', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
     "confirm_password": new FormControl('', [Validators.required]),
-    "first_name": new FormControl('Alfredo', [Validators.required]),
+    "first_name": new FormControl('', [Validators.required]),
     "last_name": new FormControl(''),
     "phone_number": new FormControl(''),
     "birth_date": new FormControl(''),
