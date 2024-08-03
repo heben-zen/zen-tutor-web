@@ -51,4 +51,8 @@ export class TutorsComponent {
   selectTutor(tutor: Tutor) {
     this.selectedTutor = tutor;
   }
+  handleButtonClick(tutor: any, drawer: any) {
+    this.selectTutor(tutor);
+    drawer.close();
+  }
 }

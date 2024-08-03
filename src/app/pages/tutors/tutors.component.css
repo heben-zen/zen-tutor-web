@@ -23,3 +23,8 @@ mat-sidenav {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+@media (max-width: 500px){
+    mat-sidenav {
+      width: 100%;
+    }
+}
