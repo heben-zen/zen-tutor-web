@@ -48,4 +48,12 @@ export class LogInService {
       return false;
     }
   }
+
+  getUsername(): string {
+    return this.cookieService.get('username');
+  }
+
+  getUserID(): number {
+    return parseInt(this.cookieService.get('userID'));
+  }
 }

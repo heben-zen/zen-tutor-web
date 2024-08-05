@@ -17,7 +17,9 @@ export const environment = {
   API_HOST: 'http://localhost:8080',
   API_URL: 'http://localhost:8080/api/v1',
   VIDEO_WS_URI: 'ws://localhost',
-  VIDEO_WS_PORT: '8081'
+  VIDEO_WS_PORT: '8081',
+  MESSAGING_WSS_URI: 'ws://localhost',
+  MESSAGING_WSS_PORT: '8082'
 };
 
 /*

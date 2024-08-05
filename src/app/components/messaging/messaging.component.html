@@ -1,0 +1,5 @@
+<div>
+    @for (recipient of recipients; track recipient.id) {
+        <app-messaging-chat [recipient]="recipient" [closeChat]="closeChat"></app-messaging-chat>
+    }
+</div>

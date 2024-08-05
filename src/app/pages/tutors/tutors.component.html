@@ -51,10 +51,12 @@
              </p>
            </mat-card-content>
            <mat-card-actions>
-             <button mat-button>Message</button>
+             <button mat-button (click)="openChat()">Message</button>
              <button routerLink="/lesson-space" mat-button>Call</button>
            </mat-card-actions>
          </mat-card>
        }
-    </mat-sidenav-content>
-</mat-sidenav-container>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <app-messaging [recipients]="openChats" [closeChat]="closeChat"></app-messaging>
+    
