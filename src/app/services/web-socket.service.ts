@@ -1,5 +1,5 @@
 import { Injectable, Input } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { environment } from 'environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { Socket, io } from 'socket.io-client';
@@ -11,8 +11,8 @@ export class WebSocketService {
   private socket: Socket = io();
   private messageSubject = new Subject<any>();
   public messages = this.messageSubject.asObservable();
-  private WSSURI = environment.MESSAGING_WSS_URI;
-  private WSSPORT = environment.MESSAGING_WSS_PORT;
+  private MessagingSocketIOURI = environment.MESSAGING_URI;
+  private MessagingPORT = environment.MESSAGING_PORT;
   private API_URL = environment.API_URL;
   @Input()
   public clientID: number | null = null;
@@ -21,7 +21,7 @@ export class WebSocketService {
     this.initializeUserID()
       .then(() => {
         console.log("Connecting to server");
-        this.socket = io(`${this.WSSURI}:${this.WSSPORT}?id=${this.clientID}`);
+        this.socket = io(`${this.MessagingSocketIOURI}:${this.MessagingPORT}?id=${this.clientID}`);
         this.socket.on('connect', () => {
           console.log('Connected to server');
         });
