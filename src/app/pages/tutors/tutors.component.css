@@ -32,5 +32,6 @@ mat-sidenav {
 .mat-list-icon {
   height: 40px;
   border-radius: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
