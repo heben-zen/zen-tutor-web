@@ -13,4 +13,6 @@ export const environment = {
   API_URL: 'https://spring-api-ikmk7odgjq-uc.a.run.app:443/api/v1',
   VIDEO_WS_URI: 'wss://api.zentutor.ca',
   VIDEO_WS_PORT: '8081',
+  MESSAGING_URI: 'https://api.zentutor.ca',
+  MESSAGING_PORT: '8083',
 };

@@ -1,0 +1,14 @@
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="">{{ recipient?.name }}</div>
+        <button mat-button class="" (click)="closeChat(recipient)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <ul class="messages">
+        @for (message of messages ; track $index) {
+            <li>{{ message.text }}</li>
+        }
+    </ul>
+    <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message...">
+</div>

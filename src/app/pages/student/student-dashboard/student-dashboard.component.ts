@@ -3,13 +3,14 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LogInService } from 'app/services/log-in.service';
+import { MessagingChatComponent } from 'app/components/messaging/messaging-chat/messaging-chat.component';
 
 @Component({
   selector: 'app-student-dashboard',
   standalone: true,
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css',
-  imports: [NavigationBarComponent]
+  imports: [NavigationBarComponent, MessagingChatComponent]
 })
 export class StudentDashboardComponent {
   displayStudentLogIn: boolean = false;
