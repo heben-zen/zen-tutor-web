@@ -13,6 +13,6 @@ export const environment = {
   API_URL: 'https://api.zentutor.ca:8080/api/v1',
   VIDEO_WS_URI: 'wss://api.zentutor.ca',
   VIDEO_WS_PORT: '8081',
-  MESSAGING_URI: 'api.zentutor.ca',
+  MESSAGING_URI: 'https://api.zentutor.ca',
   MESSAGING_PORT: '8083',
 };
