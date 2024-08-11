@@ -13,7 +13,7 @@ app-home {
     color: #721c24; /* Dark red text */
     text-align: center;
     padding: 10px 0;
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 2;
 }
 .btn{
     border-radius: 999px;
@@ -27,6 +27,7 @@ app-home {
     background-color: #6e30ec; /* New primary color on hover/focus */
     border-color: #6e30ec; /* New primary border color on hover/focus */
 }
+
 ::selection {
     color: white;
     background: #6e30ec;
