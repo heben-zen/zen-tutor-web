@@ -19,7 +19,7 @@ export const environment = {
   VIDEO_WS_URI: 'ws://localhost',
   VIDEO_WS_PORT: '8081',
   MESSAGING_URI: 'ws://localhost',
-  MESSAGING_PORT: '8082'
+  MESSAGING_PORT: '8083'
 };
 
 /*

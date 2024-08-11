@@ -38,13 +38,13 @@ export class MessagingChatComponent implements OnInit {
   }
 
   sendMessage(): void {
-    console.log("Sending message: " + this.newMessage);
     if (this.newMessage.trim() !== '') {
       const message: Message = { 
         text: this.newMessage, 
         timestamp: new Date(), 
         recipientID: this.recipient?.id! , // Non-null assertion operator
         senderID: this.webSocketService.clientID! }; 
+      console.log("Sending message: " + message);
       this.webSocketService.sendMessage(message);
       this.messages.push(message);
       this.newMessage = '';

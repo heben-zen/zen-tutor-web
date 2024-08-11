@@ -13,6 +13,7 @@ import { Tutor } from '../tutor/tutor';
 import { ChangeDetectorRef } from '@angular/core';
 import { MessagingComponent } from 'app/components/messaging/messaging.component';
 import { ChatRecipient } from 'app/models/chat-recipient';
+import { OrderedSet } from 'js-sdsl'
 
 const tutorsURI = `${environment.API_URL}/tutors`
 
@@ -27,14 +28,13 @@ export class TutorsComponent {
   tutors: Tutor[] = []; // Placeholder for fetched data
   selectedTutor: Tutor | null = null;
   uploadsFolder = environment.API_URL + '/uploads/';
-  openChats: Set<ChatRecipient> = new Set<ChatRecipient>(); // List of open chats
+  openChats: OrderedSet<ChatRecipient> = new OrderedSet([], (a: ChatRecipient, b: ChatRecipient) => a.id! - b.id!);
   closeChat: Function = (chat: ChatRecipient) => {
     console.log('Closing chat', chat);
-    this.openChats.delete(chat);
+    this.openChats.eraseElementByKey(chat);
   }
 
-
-  constructor(private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {} // Inject HttpClient
+  constructor(private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) { } // Inject HttpClient
 
   ngOnInit() {
     this.fetchTutors();
@@ -53,11 +53,7 @@ export class TutorsComponent {
   }
 
   openChat() {
-    // Append new chat
-    // const chatRecipient: ChatRecipient = { ...this.selectedTutor!, messages: [] };
-    // this.openChats.add(chatRecipient);
-    this.openChats.add(this.selectedTutor!);
-    console.log(this.openChats);
+    this.openChats.insert({...this.selectedTutor!, messages: []});
   }
 
   // closeChat(chatID: number) {

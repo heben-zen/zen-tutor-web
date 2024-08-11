@@ -5,6 +5,8 @@ import { environment } from 'environments/environment';
 import { OnInit } from '@angular/core';
 import { WebSocketService } from 'app/services/web-socket.service';
 import { ChatRecipient } from 'app/models/chat-recipient';
+import { OrderedSet } from 'js-sdsl';
+
 
 @Component({
   selector: 'app-messaging',
@@ -16,7 +18,7 @@ import { ChatRecipient } from 'app/models/chat-recipient';
 export class MessagingComponent implements OnInit {
   // List of open chats
   @Input()
-  recipients: Set<ChatRecipient> = new Set<ChatRecipient>();
+  recipients: OrderedSet<ChatRecipient> = new OrderedSet([], (a: ChatRecipient, b: ChatRecipient) => a.id! - b.id!);
   @Input()
   closeChat: Function = () => {
     throw new Error('closeChat function not implemented');
@@ -34,9 +36,9 @@ export class MessagingComponent implements OnInit {
           fetch(`${environment.API_URL}/users/${senderID}`)
             .then((response) => response.json())
             .then((user) => {
-              const sender: ChatRecipient = { ...user}
-              this.recipients.add(sender);
-              this.webSocketService.sendMessage({... message, recipientID: this.webSocketService.clientID});
+              const sender: ChatRecipient = user
+              sender.messages = [message];
+              this.recipients.insert(sender);
             });
         }
     });

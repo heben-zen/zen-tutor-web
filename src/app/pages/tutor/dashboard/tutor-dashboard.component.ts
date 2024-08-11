@@ -5,6 +5,7 @@ import { LogInService } from 'app/services/log-in.service';
 import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
 import { MessagingComponent } from 'app/components/messaging/messaging.component';
 import { ChatRecipient } from 'app/models/chat-recipient';
+import { OrderedSet } from 'js-sdsl';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +16,9 @@ import { ChatRecipient } from 'app/models/chat-recipient';
 })
 export class TutorDashboardComponent implements OnInit {
   displayTutorLogIn: boolean = false;
-  recipients: Set<ChatRecipient> = new Set<ChatRecipient>();
+  recipients: OrderedSet<ChatRecipient> = new OrderedSet<ChatRecipient>([], (a: ChatRecipient, b: ChatRecipient) => a.id - b.id);
   closeChat: Function = (chat: ChatRecipient) => {
-    this.recipients.delete(chat)
+    this.recipients.eraseElementByKey(chat);
   }
 
   constructor(private cookieService : CookieService, private router: Router, private logInService: LogInService) {
