@@ -17,7 +17,7 @@ app-home {
 }
 .btn{
     border-radius: 999px;
-    padding: 6px 18px;
+    padding: 6px 24px;
 }
 .btn-primary {
     background-color: #5e17eb; /* New primary color */
@@ -28,3 +28,7 @@ app-home {
     border-color: #6e30ec; /* New primary border color on hover/focus */
 }
 
+::selection {
+    color: white;
+    background: #6e30ec;
+}
