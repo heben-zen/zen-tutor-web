@@ -8,7 +8,7 @@
                   @if (tutor.profilePicture_name === null) {
                     <mat-icon matListItemAvatar aria-hidden="false" aria-label="Tutor Avatar" fontIcon="face"></mat-icon>
                   } @else {
-                    <img matListItemAvatar src="{{ uploadsFolder }}{{ tutor.profilePicture_name }}" alt="Tutor's avatar">
+                    <img class="avatar" matListItemAvatar src="{{ uploadsFolder }}{{ tutor.profilePicture_name }}" alt="Tutor's avatar">
                   }
                     {{ tutor.name }}
                 </button>

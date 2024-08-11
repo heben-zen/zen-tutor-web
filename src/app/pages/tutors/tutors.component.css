@@ -29,7 +29,7 @@ mat-sidenav {
       width: 100%;
     }
 }
-.mat-list-icon {
+.avatar {
   height: 40px;
   border-radius: 100%;
   aspect-ratio: 1 / 1;
