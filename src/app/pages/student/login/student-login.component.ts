@@ -58,7 +58,6 @@ export class StudentLoginComponent implements OnInit{
     const username : string = email ?? "";
     // Send POST request to the server
     const payload = JSON.stringify({username, password})
-    console.log(payload);
     const res = await fetch(this.loginEndpoint, {
       method: 'POST',
       headers: {
