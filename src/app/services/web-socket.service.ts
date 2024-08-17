@@ -29,6 +29,9 @@ export class WebSocketService {
           console.log('Received message from server');
           this.messageSubject.next(message);
         });
+        this.socket.on('disconnect', () => {
+          console.log('Disconnected from server');
+        });
       });
   }
 
