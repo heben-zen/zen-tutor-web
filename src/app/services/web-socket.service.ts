@@ -18,6 +18,7 @@ export class WebSocketService {
   public clientID: number | null = null;
 
   constructor(private cookieService: CookieService) {
+    console.log(`Connecting to server ${this.MessagingSocketIOURI}:${this.MessagingPORT}`);
     this.initializeUserID()
       .then(() => {
         console.log("Connecting to server");
@@ -29,7 +30,10 @@ export class WebSocketService {
           console.log('Received message from server');
           this.messageSubject.next(message);
         });
-      });
+      }).catch((error) => {
+        console.error(error)
+        console.log("Could not connect to messaging server");
+        });
   }
 
   sendMessage(message: any): void {
@@ -39,6 +43,7 @@ export class WebSocketService {
   async initializeUserID(): Promise<void> {
     console.log("Initializing UserID");
     const username = this.cookieService.get('username');
+    if (!username) throw new Error('Not logged in');
     return fetch(`${this.API_URL}/users/${username}`)
       .then((response) => response.json())
       .then((data) => {
