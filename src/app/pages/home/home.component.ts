@@ -12,16 +12,17 @@ import { LogInService } from "../../services/log-in.service";
 })
 export class HomeComponent implements OnInit {
   title = 'Zen';
-  findATutorLink = "/tutors";
+  findATutorLink = "/student/login";
 
   constructor(private ls: LogInService) { 
     // Verify that the user is logged in
     ls.isLoggedInAsStudent().then((is_logged_in) => {
       if (!is_logged_in) {
-        this.findATutorLink = "/student/login";
+        this.findATutorLink = "/tutors";
       }
-    })
-    
+    }).catch((err) => {
+      console.log("Log in before continuing");
+    });
   }
 
   ngOnInit() {
