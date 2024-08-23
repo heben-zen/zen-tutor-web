@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation-bar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
   standalone: true,
   imports: [NavigationBarComponent, ReactiveFormsModule]
 })
-export class RegisterComponent{
+export class RegisterComponent implements OnInit {
   registrationForm: FormGroup | any;
   register_endpoint = `${environment.API_URL}/registration/tutor`;
   form_submitted = false;
@@ -24,7 +25,7 @@ export class RegisterComponent{
   subjects: any[] = [];
 
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
     // TODO: Fix the default country in the form
     this.registrationForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -54,7 +55,14 @@ export class RegisterComponent{
     });
 
   }
-
+  
+  ngOnInit(): void {
+    // Look up email query param
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.registrationForm.controls.email.setValue(params['email']);
+    })
+    
+  }
 
   async submitForm() : Promise<void> {
     if (this.registrationForm?.valid && this.passwordMatchValidator()) {

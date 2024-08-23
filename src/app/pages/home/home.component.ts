@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LogInService } from "../../services/log-in.service";
 
 @Component({
@@ -13,11 +13,14 @@ import { LogInService } from "../../services/log-in.service";
 export class HomeComponent implements OnInit {
   title = 'Zen';
   findATutorLink = "/student/login";
+  registerTutorLink = "/tutor/register";
+  @ViewChild('tutorRegistrationEmail') tutorRegistrationEmail!: ElementRef<HTMLInputElement>;
+  
 
-  constructor(private ls: LogInService) { 
+  constructor(private ls: LogInService, private router: Router) { 
     // Verify that the user is logged in
     ls.isLoggedInAsStudent().then((is_logged_in) => {
-      if (!is_logged_in) {
+      if (is_logged_in) {
         this.findATutorLink = "/tutors";
       }
     }).catch((err) => {
@@ -26,6 +29,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  onTutorRegister(email: string) {
+    // Redirect to register page with query param
+    this.router.navigate([this.registerTutorLink], { queryParams: { email: email } });
 
   }
 }

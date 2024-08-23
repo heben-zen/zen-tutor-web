@@ -1,18 +1,95 @@
 <navigation-bar></navigation-bar>
 <main>
-  <div class="container mt-2">
-    <div class="row">
-      <div class="col-md-7">
-        <h1 class="h1">Verified Tutors only $20/hour<br> Tutor keeps it all</h1>
-        <small class="text-muted">We are a platform that connects students with verified tutors. We do not take any commission from the tutors. The tutors keep all the money they earn. We have tutors for Math, Science, English, History, and more</small>
-        <button routerLink="{{ findATutorLink }}" class="btn btn-primary mt-3">
-          Find a Tutor 
+  <div class="container-fluid mt-2 p-0">
+    <section class="get-started">
+      <div id="get-started-container">
+        <h1>Get your first hour of tutoring on us!</h1>
+        <p>We are a platform that connects students with verified tutors. We do not take any commission from the tutors. The tutors keep all the money they earn. We have tutors for Math, Science, English, History, and more</p>
+        <button routerLink="{{ findATutorLink }}" class="btn btn-primary">
+          Get started
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
         </button>
       </div>
-      <div class="col-md-5">
+      <div id="image-container">
         <img src="../../../assets/student.png" alt="student" draggable="false">
       </div>
-    </div>
+    </section>
+    <section id="how-it-works-sec">
+      <small>THE WORKFLOW</small>
+      <h2 class="h2 mt-2">How it works</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">Step 1</h3>
+              <button routerLink="{{ findATutorLink }}" class="btn btn-primary">
+                Find a tutor
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">Step 2</h3>
+              <p class="highlight-blue"><b>Book a lesson</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">Step 3</h3>
+              <p class="highlight-yellow"><b>Meet with the tutor</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <section>
+      <h2 class="h2 mt-5">Why choose us</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">Verified Tutors</h3>
+              <p>Our tutors are verified</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">No Commission</h3>
+              <p>We do not take any commission from the tutors</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="h3">Affordable</h3>
+              <p>Our tutors are only $20/hour</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section id="become-a-tutor-container">
+      <small>TUTOR REGISTER</small>
+      <h1>Register to become a Tutor</h1>
+      <div>
+        <img src="../../../assets/student-2.png" alt="Tutor picture">
+      </div>
+      <div>
+        <p>If you are a tutor looking to make some extra money and be part of Zen's mission of <b>enhancing the learning experience of individuals</b>! 
+          Please fill in the form below</p>
+        <div id="tutor-register-email-field">
+          <input #tutorRegistrationEmail type="text" class="form-control" placeholder="Your email here">
+        </div>
+        <button class="btn btn-primary mb-5" (click)="onTutorRegister(tutorRegistrationEmail.value)">Register</button>
+      </div>
+    </section>
   </div>
 </main>
