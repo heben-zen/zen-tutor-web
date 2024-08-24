@@ -19,7 +19,10 @@ export class WebSocketService {
 
   constructor(private cookieService: CookieService) {
     this.initializeUserID()
-      .then(() => {
+      .then((success: Boolean) => {
+        if (!success) {
+          throw new Error('User not logged in');
+        }
         console.log("Connecting to server");
         this.socket = io(`${this.MessagingSocketIOURI}:${this.MessagingPORT}?id=${this.clientID}`);
         this.socket.on('connect', () => {
@@ -32,6 +35,10 @@ export class WebSocketService {
         this.socket.on('disconnect', () => {
           console.log('Disconnected from server');
         });
+      })
+      .catch((error) => {
+        console.error("Failed to start real time messaging")
+        console.error(error);
       });
   }
 
@@ -39,14 +46,17 @@ export class WebSocketService {
     this.socket.send(message);
   }
 
-  async initializeUserID(): Promise<void> {
-    console.log("Initializing UserID");
+  private async initializeUserID(): Promise<Boolean> {
     const username = this.cookieService.get('username');
+    if (!username) {
+      return false;
+    }
     return fetch(`${this.API_URL}/users/${username}`)
       .then((response) => response.json())
       .then((data) => {
         this.clientID = data.id;
         console.log("ClientID set to " + this.clientID);
+        return true;
       });
   }
 

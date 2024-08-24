@@ -3,24 +3,25 @@ import { NavigationBarComponent } from 'app/pages/home/navigation-bar/navigation
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LogInService } from 'app/services/log-in.service';
-import { MessagingChatComponent } from 'app/components/messaging/messaging-chat/messaging-chat.component';
+import { MessagingComponent } from 'app/components/messaging/messaging.component';
 
 @Component({
   selector: 'app-student-dashboard',
   standalone: true,
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css',
-  imports: [NavigationBarComponent, MessagingChatComponent]
+  imports: [NavigationBarComponent, MessagingComponent]
 })
 export class StudentDashboardComponent {
   displayStudentLogIn: boolean = false;
 
   constructor(private cookieService : CookieService, private router: Router, private logInService: LogInService) {
     // Check if the user is already logged in
-    if (!logInService.isLoggedInAsStudent()) {
-      // Redirect to the login page
-      this.router.navigate(['/student/login']);
-    }
+    logInService.isLoggedInAsStudent().then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        this.router.navigate(['/student/login']);
+      }
+    });
    }
 
   logOut() {
