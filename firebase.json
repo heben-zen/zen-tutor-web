@@ -9,11 +9,15 @@
     "frameworksBackend": {
       "region": "us-east1"
     },
+    "appAssociation": "AUTO",
     "rewrites": [
       {
         "source": "**",
         "function": "/index.html"
-      }
+      },
+      { "source": "/test/**", "dynamicLinks": true }
     ]
   }
 }
+
+
