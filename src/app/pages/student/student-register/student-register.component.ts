@@ -78,7 +78,7 @@ export class StudentRegisterComponent {
     "confirm_password": new FormControl('', [Validators.required]),
     "first_name": new FormControl('', [Validators.required]),
     "last_name": new FormControl(''),
-    "phone_number": new FormControl(''),
+    // "phone_number": new FormControl(''),
     "birth_date": new FormControl(''),
   });
   selectedProfilePicture: File | null = null;
@@ -92,22 +92,24 @@ export class StudentRegisterComponent {
       this.changeDetectorRef.detectChanges();
       const formData = new FormData();
       // Ensure phone_number is treated correctly
-      let phoneNumberValue = this.form.get('phone_number')?.value;
-      let phoneNumberProcessed = {};
-      if (typeof phoneNumberValue === 'object' && phoneNumberValue !== null) {
-        phoneNumberProcessed = [...Object.values(phoneNumberValue)].join("");
-      } else {
-        phoneNumberProcessed = phoneNumberValue ? [phoneNumberValue] : [];
-      }
+      // let phoneNumberValue = this.form.get('phone_number')?.value;
+      // let phoneNumberProcessed = {};
+      // if (typeof phoneNumberValue === 'object' && phoneNumberValue !== null) {
+      //   phoneNumberProcessed = [...Object.values(phoneNumberValue)].join("");
+      // } else {
+      //   phoneNumberProcessed = phoneNumberValue ? [phoneNumberValue] : [];
+      // }
       const student = { ...this.form.value, 
         name: this.form.get('first_name')?.value, 
         surname: this.form.get('last_name')?.value,
-        phone_number: phoneNumberProcessed
+        // phone_number: phoneNumberProcessed
       }
+      console.log(student);
       delete student.confirm_password
       delete student.first_name
       delete student.last_name
       formData.append('student', new Blob([JSON.stringify(student)], {type: 'application/json'}))
+      console.log(formData);
       try {
         const response = await fetch(this.registerEndpoint, 
           {
