@@ -17,4 +17,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZEN_TUTOR_WEB }}'
           channelId: live
-          projectId: zen-tutor-web
+          projectId: zen-ed
