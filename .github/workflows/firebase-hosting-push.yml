@@ -14,10 +14,10 @@ jobs:
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZEN_TUTOR_WEB }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZEN_MOBILE_64E18 }}
           channelId: live
-          projectId: zen-ed
+          projectId: zen-mobile-64e18
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
       
