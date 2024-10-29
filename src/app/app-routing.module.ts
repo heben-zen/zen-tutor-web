@@ -13,6 +13,7 @@ import { StudentDashboardComponent } from './pages/student/student-dashboard/stu
 import { LessonSpaceComponent } from './pages/lesson-space/lesson-space.component';
 import { TutorsComponent } from './pages/tutors/tutors.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'editprofile', component: EditProfile },
   { path: 'lesson-space', component: LessonSpaceComponent},
   { path: 'contact', component: ContactComponent},
-  { path: '**', component: NotfoundComponent }
+  { path: 'privacy_policy', component: PrivacyPolicyComponent},
+  { path: '**', component: NotfoundComponent },
   // { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
